@@ -34,6 +34,8 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             //getSupportActionBar().setDisplayUseLogoEnabled(true);
+            //getSupportActionBar().setDisplayUseLogoEnabled(true);
+            //getSupportActionBar().setDisplayUseLogoEnabled(true);
         }
     }
 
