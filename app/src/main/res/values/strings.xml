@@ -14,9 +14,10 @@
         completions."
     </string>
     <string name="otpText1">Enter One Time Password(OTP)</string>
-    <string name="otpText2">One time password (OTP) has been sent to your mobile no ******@@@@, please enter the same here to login.</string>
+    <string name="otpText2">One time password (OTP) has been sent to your mobile no ******@@@@, please enter the same here to login or wait to automatically detect.</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_delete">DeleteActivity</string>
+    <string name="punch_line">You are at the best phase of your life.Do not hesitate to connect me for any assistance.</string>
 </resources>

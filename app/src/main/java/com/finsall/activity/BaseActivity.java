@@ -1,7 +1,9 @@
 package com.finsall.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -12,7 +14,9 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Cache;
 import com.android.volley.Network;
 import com.android.volley.Request;
@@ -32,6 +36,9 @@ import com.finsall.util.FinsallRequestUtil;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -66,7 +73,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         show();
         Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024);
         Network network = new BasicNetwork(new HurlStack());
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://agriyo.com/agriyo-dbservice/users/getUserByMobileAndPassword/",
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://momarkrewards.com:3030/FinsAllServer/api/",
                 jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -80,10 +87,32 @@ public abstract class BaseActivity extends AppCompatActivity {
                 hide();
                 handleErrorResult("Network Error.");
             }
-        });
+
+        }) {
+            @Override
+            public Map getHeaders() throws AuthFailureError {
+                HashMap headers = new HashMap();
+                headers.put("Content-Type", "application/json");
+                headers.put("authentication-is-public", "Y");
+                return headers;
+            }
+        };
         FinsallRequestUtil.getInstance(this).addRequestQueue(request);
 
 
+    }
+
+    protected JSONObject getBaseJSONRequestObj(String serviceName,String serviceMethod) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("serviceName", serviceName);
+            jsonObject.put("serviceMethod", serviceMethod);
+            jsonObject.put("clientId", "2017");
+            jsonObject.put("version", "1.0.0");
+        } catch (JSONException e) {
+
+        }
+        return jsonObject;
     }
 
     protected abstract void handleSuccessResult(JSONObject success);
@@ -104,5 +133,38 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void hide() {
         mProgressBar.setVisibility(View.INVISIBLE);
+    }
+
+    protected void getUserName() {
+        TextView textViewUserName= (TextView)findViewById(R.id.textViewTextUserName);
+        textViewUserName.setText("Hello "+getData("userName")+",");
+
+    }
+
+    public void openActivity(View view){
+        String TAG=view.getTag().toString();
+        Class c= null;
+        try {
+            c = Class.forName(TAG);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        if(c!=null) {
+            Intent intent = new Intent(this, c);
+            startActivity(intent);
+        }
+    }
+    protected void saveData(String key,String value){
+        SharedPreferences sf= getSharedPreferences("MyPref",
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sf.edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
+
+    protected String getData(String key){
+        SharedPreferences sf= getSharedPreferences("MyPref",
+                Context.MODE_PRIVATE);
+        return sf.getString(key,null);
     }
 }

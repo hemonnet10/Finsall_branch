@@ -4,9 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/ic_launcher"
+    android:background="@drawable/splash"
     tools:context=".activity.FinsallActivity">
 
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+        <TextView
+            android:id="@+id/textViewWelcome"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Welcome to"
+            android:textColor="@android:color/white" />
 
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewWelcome"
+        android:layout_weight="1"
+        android:gravity="center"
+        app:srcCompat="@drawable/splash_logo" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageViewLogo"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Loading..."
+            android:textColor="@android:color/white" />
+</RelativeLayout>
 
 </LinearLayout>

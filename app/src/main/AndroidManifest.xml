@@ -31,6 +31,15 @@
             android:name=".activity.LoginActivity"
             android:label="@string/title_back" />
         <activity
+            android:name=".activity.InformationActivity"
+            android:label="Information" />
+        <activity
+            android:name=".activity.PersonalActivity"
+            android:label="Personal" />
+        <activity
+        android:name=".activity.CalculateActivity"
+        android:label="Calculation" />
+        <activity
             android:name=".activity.OTPActivity"
             android:label="@string/title_back" />
         <activity android:name=".activity.HomeActivity" />

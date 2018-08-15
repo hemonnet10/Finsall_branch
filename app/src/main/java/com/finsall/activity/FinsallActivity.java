@@ -28,9 +28,13 @@ public class FinsallActivity extends BaseActivity {
             @Override
 
             public void run() {
-
-
-                Intent intent=new Intent(FinsallActivity.this,LoginActivity.class);
+                Intent intent=null;
+                if(getData("user")!=null) {
+                    intent = new Intent(FinsallActivity.this, HomeActivity.class);
+                }
+                else{
+                    intent = new Intent(FinsallActivity.this, LoginActivity.class);
+                }
                 startActivity(intent);
                 // close this activity
 
@@ -38,7 +42,7 @@ public class FinsallActivity extends BaseActivity {
 
             }
 
-        }, 5*1000); // wait for 5 seconds
+        }, 2*1000); // wait for 5 seconds
 
     }
 

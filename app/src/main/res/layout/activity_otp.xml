@@ -10,51 +10,69 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@android:color/background_light"
+    android:background="@drawable/login_background"
     tools:context=".activity.OTPActivity">
 
-    <ImageView
-        android:layout_width="372dp"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/alert_dark_frame"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="115dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/finsall_logo_blue" />
 
-    <TextView
-        android:layout_width="255dp"
-        android:layout_height="20dp"
-        android:text="@string/otpText1"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="175dp" />
 
-    <TextView
-        android:layout_width="255dp"
-        android:layout_height="82dp"
-        android:text="@string/otpText2"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="202dp" />
+        <TextView
+            android:id="@+id/textOTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/otpText1"
+            android:textStyle="bold"
+            android:layout_below="@+id/imageViewLogo" />
 
-    <EditText
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter OTP"
-        android:inputType="number"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="297dp" />
+        <TextView
+            android:id="@+id/textOTP2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textOTP"
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get OTP On Call(1.00)"
-        tools:layout_editor_absoluteX="217dp"
-        tools:layout_editor_absoluteY="352dp" />
+            android:layout_marginTop="10dp"
+            android:text="@string/otpText2" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="verifyOTP"
-        app:srcCompat="@android:drawable/alert_dark_frame"
-        tools:layout_editor_absoluteX="164dp"
-        tools:layout_editor_absoluteY="419dp" />
+        <EditText
+            android:id="@+id/editTextOTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="20"
+            android:layout_marginTop="30dp"
+            android:inputType="textPassword"
+            android:layout_below="@+id/textOTP2"
+            android:hint="@string/otpText1" />
+
+        <TextView
+            android:id="@+id/textResend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextOTP"
+            android:textSize="10sp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="Did not receive the code? Resend OTP" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textResend"
+            android:background="@android:color/holo_blue_light"
+            android:onClick="verifyOTP"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:text="LOGIN" />
+
+    </RelativeLayout>
+
+
 </LinearLayout>

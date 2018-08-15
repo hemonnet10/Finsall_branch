@@ -9,38 +9,98 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@android:color/background_light"
+    android:background="@drawable/login_background"
     tools:context=".activity.LoginActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:text="Finsall"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="155dp"
-        android:text="Sign in to continue"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/finsall_logo_blue" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Mobile No" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:text="By logging in, you agree to our terms and conditions and that you have read our privacy policy." />
+        <TextView
+            android:id="@+id/textSingnIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Sign in to continue"
+            android:textStyle="bold"
+            android:layout_below="@+id/imageViewLogo" />
+        <EditText
+            android:id="@+id/editTextUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="20"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/textSingnIn"
+            android:inputType="text"
+            android:hint="Username/Email ID/Mobile Number/BA ID" />
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="20"
+            android:layout_marginTop="5dp"
+            android:inputType="textPassword"
+            android:layout_below="@+id/editTextUserName"
+            android:hint="Password" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_green_light"
-        android:onClick="sendOTP"
-        android:text="Send OTP" />
+
+
+        <TextView
+            android:id="@+id/textOR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextPassword"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="OR" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textOR"
+            android:layout_marginTop="5dp"
+            android:text="Send One Time Password" />
+
+
+        <TextView
+            android:id="@+id/textTrouble"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/checkBox"
+            android:gravity="right"
+            android:textColor="@android:color/holo_blue_light"
+            android:text="Trouble logging in?" />
+        <TextView
+            android:id="@+id/textTerms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textTrouble"
+            android:textSize="10sp"
+            android:layout_marginTop="5dp"
+            android:text="By logging in, you agree to our Terms &amp; Conditions and that you have read our privacy policy." />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textTerms"
+            android:background="@android:color/holo_blue_light"
+            android:onClick="sendOTP"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="5dp"
+            android:text="LOGIN" />
+
+    </RelativeLayout>
+
 
 </LinearLayout>
