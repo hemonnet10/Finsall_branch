@@ -142,10 +142,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void openActivity(View view){
+
         String TAG=view.getTag().toString();
         Class c= null;
         try {
-            c = Class.forName(TAG);
+            c = Class.forName("com.finsall.activity."+TAG);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

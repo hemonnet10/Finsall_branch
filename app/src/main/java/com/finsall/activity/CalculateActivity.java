@@ -46,4 +46,5 @@ public class CalculateActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-}
+
+    }

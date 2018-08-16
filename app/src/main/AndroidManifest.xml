@@ -37,12 +37,19 @@
             android:name=".activity.PersonalActivity"
             android:label="Personal" />
         <activity
-        android:name=".activity.CalculateActivity"
-        android:label="Calculation" />
+            android:name=".activity.CalculateActivity"
+            android:label="Calculation" />
         <activity
             android:name=".activity.OTPActivity"
             android:label="@string/title_back" />
         <activity android:name=".activity.HomeActivity" />
+        <activity android:name=".activity.MotorLoanActivity"
+            android:label="Motor Loan Calculation"/>
+        <activity android:name=".activity.ChooseUserActivity"
+        android:label="Proceed to Loan" />
+        <activity android:name=".activity.CustomerDetailActivity"
+            android:label="Proceed to Loan" />
+
     </application>
 
 </manifest>

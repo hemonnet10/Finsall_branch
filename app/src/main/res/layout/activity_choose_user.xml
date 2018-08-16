@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".activity.ChooseUserActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/radioUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+            <RadioButton
+                android:id="@+id/radioNewUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/form_margin"
+                android:text="New Customer"/>
+            <RadioButton
+                android:id="@+id/radioOldUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Old Customer"/>
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/etMobileNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioUser"
+            android:layout_margin="@dimen/form_margin"
+            android:enabled="false"
+            android:hint="Enter Mobile No" />
+        <Button
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etMobileNo"
+            android:text="On Board Customer"
+            android:onClick="onBoardCustomer"
+            android:layout_margin="@dimen/form_margin"
+            android:background="@android:color/holo_blue_bright"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -90,7 +90,9 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/about" />
+                    android:onClick="openActivity"
+                    android:tag="MyProfileActivity"
+                    app:srcCompat="@drawable/my_profile" />
 
                 <TextView
                     android:id="@+id/textOffer1"
@@ -98,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imageOffer1"
                     android:layout_centerHorizontal="true"
-                    android:text="About FinsAll" />
+                    android:text="My Profile" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -121,8 +123,9 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:onClick="showFAQ"
-                    app:srcCompat="@drawable/faq" />
+                    android:onClick="openActivity"
+                    android:tag="MyAccountActivity"
+                    app:srcCompat="@drawable/my_account" />
 
                 <TextView
                     android:id="@+id/textFaqs"
@@ -130,73 +133,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imageOffer2"
                     android:layout_centerHorizontal="true"
-                    android:text="FAQs" />
+                    android:text="My Account" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/relativeLayoutPartition"
-                android:layout_width="@dimen/image_button_dimension"
-                android:layout_height="20dp"
-                android:layout_below="@+id/relativeLayoutOption1" />
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutOption3"
-                android:layout_width="@dimen/image_button_dimension"
-                android:layout_height="@dimen/image_button_dimension"
-                android:layout_below="@+id/relativeLayoutPartition"
-
-                android:background="@android:color/white">
-
-                <ImageView
-                    android:id="@+id/imageTrack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/track" />
-
-                <TextView
-                    android:id="@+id/textAboutFinsall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imageTrack"
-                    android:layout_centerHorizontal="true"
-                    android:text="Track" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutOptionMargin3"
-                android:layout_width="20dp"
-                android:layout_height="@dimen/image_button_dimension"
-                android:layout_below="@+id/relativeLayoutPartition"
-
-                android:layout_toRightOf="@+id/relativeLayoutOption3" />
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutOption4"
-                android:layout_width="@dimen/image_button_dimension"
-                android:layout_height="@dimen/image_button_dimension"
-                android:layout_below="@+id/relativeLayoutPartition"
-                android:layout_toRightOf="@+id/relativeLayoutOptionMargin3"
-
-                android:background="@android:color/white">
-
-                <ImageView
-                    android:id="@+id/imageNotification"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/notification" />
-
-                <TextView
-                    android:id="@+id/textNotificationBA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imageNotification"
-                    android:layout_centerHorizontal="true"
-                    android:text="Notification BA" />
-            </RelativeLayout>
 
         </RelativeLayout>
     </RelativeLayout>

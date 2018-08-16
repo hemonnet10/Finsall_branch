@@ -7,7 +7,7 @@
     android:background="@drawable/login_background"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".activity.InformationActivity">
+    tools:context=".activity.CalculateActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -82,6 +82,8 @@
                 android:id="@+id/relativeLayoutOption1"
                 android:layout_width="@dimen/image_button_dimension"
                 android:layout_height="@dimen/image_button_dimension"
+                android:onClick="openActivity"
+                android:tag="MotorLoanActivity"
                 android:background="@android:color/white">
 
                 <ImageView
@@ -90,7 +92,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/about" />
+
+                    app:srcCompat="@drawable/motor" />
 
                 <TextView
                     android:id="@+id/textOffer1"
@@ -98,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imageOffer1"
                     android:layout_centerHorizontal="true"
-                    android:text="About FinsAll" />
+                    android:text="Motor" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -112,6 +115,8 @@
                 android:layout_width="@dimen/image_button_dimension"
                 android:layout_height="@dimen/image_button_dimension"
                 android:layout_toRightOf="@+id/relativeLayoutOptionMargin1"
+                android:onClick="openActivity"
+                android:tag="NonMotorLoanActivity"
 
                 android:background="@android:color/white">
 
@@ -121,8 +126,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:onClick="openActivity()"
-                    android:tag="NON_MOTOR"
                     app:srcCompat="@drawable/non_motor" />
 
                 <TextView
