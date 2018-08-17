@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 
 import com.finsall.R;
 
@@ -15,7 +17,17 @@ import org.json.JSONObject;
 
 public class CustomerDetailActivity extends BaseActivity {
 
+
+    private EditText etName;
     private EditText etMobileNo;
+    private EditText etEmailId;
+    private RadioGroup rg;
+    private EditText etAdhaarVID;
+    private EditText etCIN;
+    private EditText etPAN;
+    private EditText etTAN;
+    private RelativeLayout rlIndividual;
+    private RelativeLayout rlCorporate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +38,20 @@ public class CustomerDetailActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+        etName=(EditText)findViewById(R.id.etName);
         etMobileNo=(EditText)findViewById(R.id.etMobileNo);
+        etEmailId=(EditText)findViewById(R.id.etEmailId);
+        etAdhaarVID=(EditText)findViewById(R.id.etAdhaarOrVID);
+        etCIN=(EditText)findViewById(R.id.etCIN);
+        etPAN=(EditText)findViewById(R.id.etPan);
+        etTAN=(EditText)findViewById(R.id.etTAN);
+
+        rg= (RadioGroup)findViewById(R.id.radioUserType);
+        rg.setOnCheckedChangeListener(new CustomerDetailActivity.ChooseUserTypeListener());
+
+        rlCorporate=(RelativeLayout)findViewById(R.id.rlCorporate);
+        rlIndividual=(RelativeLayout)findViewById(R.id.rlIndividual);
+
     }
 
     @Override
@@ -52,25 +77,32 @@ public class CustomerDetailActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    class OTPCheckBoxChangeClicker implements CheckBox.OnCheckedChangeListener
+
+    public void showOTPPage(View view) {
+        Intent intent= new Intent(this,OTPActivity.class);
+        intent.putExtra("REQUEST_TYPE","CUSTOMER_DETAIL");
+
+        startActivity(intent);
+    }
+
+    public void updateCustomerDetailFromKYC(View view) {
+    }
+
+
+    class ChooseUserTypeListener implements RadioGroup.OnCheckedChangeListener
     {
-
         @Override
-        public void onCheckedChanged(CompoundButton buttonView,
-                                     boolean isChecked) {
-            // TODO Auto-generated method stub
+        public void onCheckedChanged(RadioGroup radioGroup, int i) {
+            if(rg.getCheckedRadioButtonId()==R.id.radioIndividual) {
+                rlIndividual.setVisibility(View.VISIBLE);
+                rlCorporate.setVisibility(View.GONE);
 
-            // Toast.makeText(CheckBoxCheckedDemo.this, &quot;Checked =&gt; &quot;+isChecked, Toast.LENGTH_SHORT).show();
-            Button loginBtn=(Button)findViewById(R.id.btnLogin);
-
-            if(isChecked) {
-                etMobileNo.setEnabled(false);
-                //loginBtn.setText("SEND OTP");
             }
             else {
-                etMobileNo.setEnabled(true);
-                //loginBtn.setText("LOGIN");
+                rlIndividual.setVisibility(View.GONE);
+                rlCorporate.setVisibility(View.VISIBLE);
             }
+
         }
     }
 

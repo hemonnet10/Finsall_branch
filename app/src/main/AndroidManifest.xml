@@ -48,7 +48,15 @@
         <activity android:name=".activity.ChooseUserActivity"
         android:label="Proceed to Loan" />
         <activity android:name=".activity.CustomerDetailActivity"
-            android:label="Proceed to Loan" />
+            android:label="Customer Details" />
+        <activity android:name=".activity.IndividualKYCActivity"
+            android:label="Aadhaar Card" />
+        <activity android:name=".activity.CustomerRejectionActivity"
+            android:label="Customer Rejection" />
+        <activity android:name=".activity.FingerPrintScanningActivity"
+            android:label="Finger Print Scanning" />
+        <activity android:name=".activity.KYCCustomerDetailActivity"
+            android:label="Customer Details" />
 
     </application>
 

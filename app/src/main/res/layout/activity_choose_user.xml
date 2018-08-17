@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/etMobileNo"
-            android:text="On Board Customer"
+            android:text="NEXT"
             android:onClick="onBoardCustomer"
             android:layout_margin="@dimen/form_margin"
             android:background="@android:color/holo_blue_bright"
