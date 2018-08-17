@@ -95,7 +95,7 @@
                         android:layout_width="@dimen/image_offer_dimension_width"
                         android:layout_height="@dimen/image_offer_dimension_height"
                         android:gravity="center"
-                        app:srcCompat="@drawable/banner" />
+                        app:srcCompat="@drawable/offer" />
 
                     <TextView
                         android:id="@+id/textOffer1"
