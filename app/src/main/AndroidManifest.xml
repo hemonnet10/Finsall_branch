@@ -43,21 +43,28 @@
             android:name=".activity.OTPActivity"
             android:label="@string/title_back" />
         <activity android:name=".activity.HomeActivity" />
-        <activity android:name=".activity.MotorLoanActivity"
-            android:label="Motor Loan Calculation"/>
-        <activity android:name=".activity.ChooseUserActivity"
-        android:label="Proceed to Loan" />
-        <activity android:name=".activity.CustomerDetailActivity"
+        <activity
+            android:name=".activity.MotorLoanActivity"
+            android:label="Motor Loan Calculation" />
+        <activity
+            android:name=".activity.ChooseUserActivity"
+            android:label="Proceed to Loan" />
+        <activity
+            android:name=".activity.CustomerDetailActivity"
             android:label="Customer Details" />
-        <activity android:name=".activity.IndividualKYCActivity"
+        <activity
+            android:name=".activity.IndividualKYCActivity"
             android:label="Aadhaar Card" />
-        <activity android:name=".activity.CustomerRejectionActivity"
+        <activity
+            android:name=".activity.CustomerRejectionActivity"
             android:label="Customer Rejection" />
-        <activity android:name=".activity.FingerPrintScanningActivity"
+        <activity
+            android:name=".activity.FingerPrintScanningActivity"
             android:label="Finger Print Scanning" />
-        <activity android:name=".activity.KYCCustomerDetailActivity"
+        <activity
+            android:name=".activity.KYCCustomerDetailActivity"
             android:label="Customer Details" />
-
+        <activity android:name=".activity.BAProfileActivity"></activity>
     </application>
 
 </manifest>
