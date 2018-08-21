@@ -31,11 +31,13 @@
                 />
             <Button
                 android:id="@+id/buttonCamera"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/imageViewPhoto"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/user_pic_camera"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
                 />
             <TextView
                 android:id="@+id/tvProfile"

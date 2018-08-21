@@ -138,12 +138,30 @@
             android:hint="\u20B9"
             android:inputType="numberDecimal" />
 
+        <TextView
+            android:id="@+id/textView08"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/eTTotalAmount"
+            android:layout_margin="@dimen/form_margin"
+            android:text="Other Amount" />
+
+        <EditText
+            android:id="@+id/editTextTotalOtherAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView08"
+            android:layout_margin="@dimen/form_margin"
+            android:ems="10"
+            android:hint="\u20B9"
+            android:inputType="numberDecimal" />
+
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/eTTotalAmount"
+            android:layout_below="@+id/editTextTotalOtherAmount"
             android:layout_margin="@dimen/form_margin"
             android:text="Eligible Loan Amount"
             android:textStyle="bold" />

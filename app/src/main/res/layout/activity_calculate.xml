@@ -18,9 +18,9 @@
             android:id="@+id/imageViewBanner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
             android:adjustViewBounds="true"
-            android:background="@drawable/banner" />
+            android:background="@drawable/banner"
+            android:scaleType="fitCenter" />
 
         <RelativeLayout
             android:id="@+id/relativeLayout1"
@@ -82,18 +82,19 @@
                 android:id="@+id/relativeLayoutOption1"
                 android:layout_width="@dimen/image_button_dimension"
                 android:layout_height="@dimen/image_button_dimension"
+                android:background="@android:color/white"
                 android:onClick="openActivity"
-                android:tag="MotorLoanActivity"
-                android:background="@android:color/white">
+                android:tag="MotorLoanActivity">
 
                 <ImageView
                     android:id="@+id/imageOffer1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-
-                    app:srcCompat="@drawable/motor" />
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/motor" />
 
                 <TextView
                     android:id="@+id/textOffer1"
@@ -115,17 +116,19 @@
                 android:layout_width="@dimen/image_button_dimension"
                 android:layout_height="@dimen/image_button_dimension"
                 android:layout_toRightOf="@+id/relativeLayoutOptionMargin1"
+                android:background="@android:color/white"
                 android:onClick="openActivity"
-                android:tag="NonMotorLoanActivity"
 
-                android:background="@android:color/white">
+                android:tag="NonMotorLoanActivity">
 
                 <ImageView
                     android:id="@+id/imageOffer2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/non_motor" />
 
                 <TextView

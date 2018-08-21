@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/below_home"
         android:icon="@drawable/home_active"
-        android:title="@string/title_home" />
+        android:title="@string/title_home"/>
 
     <item
         android:id="@+id/below_information"
-        android:icon="@drawable/information"
-        android:title="Information"
-        android:state_checked="true"/>
+        android:icon="@drawable/information_active"
+        android:title="Information"/>
 
     <item
         android:id="@+id/below_calculator"
-        android:icon="@drawable/calculator"
-        android:state_checked="true"
+        android:icon="@drawable/calculator_active"
         android:title="Calculate &amp; Apply" />
     <item
         android:id="@+id/below_profile"
-        android:icon="@drawable/profile"
-        android:state_checked="true"
+        android:icon="@drawable/profile_active"
         android:title="Personal" />
 
 

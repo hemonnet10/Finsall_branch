@@ -116,7 +116,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         hide();
-                        handleSuccessResult(response);
+                        try {
+                            handleSuccessResult(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -146,13 +150,16 @@ public abstract class BaseActivity extends AppCompatActivity {
             jsonObject.put("serviceMethod", serviceMethod);
             jsonObject.put("clientId", "2017");
             jsonObject.put("version", "1.0.0");
+            if(getData("userId")!=null)
+            jsonObject.put("loggedInUserId", getData("userId"));
+
         } catch (JSONException e) {
 
         }
         return jsonObject;
     }
 
-    protected abstract void handleSuccessResult(JSONObject success);
+    protected abstract void handleSuccessResult(JSONObject success) throws JSONException;
 
     protected abstract void handleErrorResult(String error);
 

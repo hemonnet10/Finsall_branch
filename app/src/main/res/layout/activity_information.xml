@@ -88,10 +88,12 @@
 
                 <ImageView
                     android:id="@+id/imageOffer1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/about" />
 
                 <TextView
@@ -120,11 +122,12 @@
 
                 <ImageView
                     android:id="@+id/imageOffer2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:onClick="showFAQ"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/faq" />
 
                 <TextView
@@ -153,10 +156,12 @@
 
                 <ImageView
                     android:id="@+id/imageTrack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/track" />
 
                 <TextView
@@ -188,10 +193,12 @@
 
                 <ImageView
                     android:id="@+id/imageNotification"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
                     app:srcCompat="@drawable/notification" />
 
                 <TextView

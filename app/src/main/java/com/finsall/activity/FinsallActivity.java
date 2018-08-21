@@ -31,11 +31,12 @@ public class FinsallActivity extends BaseActivity {
                 Intent intent=null;
                 if(getData("user")!=null)
                 {
-                   // intent = new Intent(FinsallActivity.this, BAProfileActivity.class);
+
                     intent = new Intent(FinsallActivity.this, HomeActivity.class);
                 }
                 else{
-                    intent = new Intent(FinsallActivity.this, LoginActivity.class);
+                    intent = new Intent(FinsallActivity.this, HomeActivity.class);
+                    //intent = new Intent(FinsallActivity.this, LoginActivity.class);
                 }
                 startActivity(intent);
                 // close this activity
