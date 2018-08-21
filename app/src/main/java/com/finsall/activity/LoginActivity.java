@@ -96,11 +96,18 @@ public class LoginActivity extends BaseActivity  {
 
     @Override
     protected void handleErrorResult(String error) {
-        Toast.makeText(this,error,Toast.LENGTH_LONG).show();
+        etPassword.setFocusable(true);
+        etPassword.setError(error);
+        //Toast.makeText(this,error,Toast.LENGTH_LONG).show();
     }
 
 
     public void sendOTP(View view) throws JSONException {
+
+        if(isNotValidRequired(etUserName))
+            return;
+        if( etPassword.isEnabled() &&isNotValidRequired(etPassword))
+            return;
 
         JSONObject jsonObject = getBaseJSONRequestObj("UserService","login");
         jsonObject.put("genericIdentifier", etUserName.getText().toString() );
@@ -111,8 +118,12 @@ public class LoginActivity extends BaseActivity  {
         else
         jsonObject.put("app", true);
 
-        sendRequestToServer(jsonObject);
-       }
+        //sendRequestToServer(jsonObject);
+        //remove below two lines
+       Intent intent = new Intent(this, OTPActivity.class);
+       startActivity(intent);
+
+    }
 
 
 

@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -37,8 +40,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -68,6 +74,37 @@ public abstract class BaseActivity extends AppCompatActivity {
         hide();
     }
 
+
+
+    protected boolean isNotValidRequired(EditText et) {
+        boolean isValid= !TextUtils.isEmpty(et.getText().toString());
+        if(!isValid) {
+            et.setError(getString(R.string.error_field_required));
+            et.requestFocus();
+        }
+        return !isValid;
+    }
+
+
+    protected boolean isNotValidDOB(EditText et) {
+        boolean isValid= (!TextUtils.isEmpty(et.getText().toString()) && Pattern.compile("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\\\d\\\\d)").matcher(et.getText().toString()).matches());
+        if(!isValid){
+            et.setError(getString(R.string.error_invalid_date));
+            et.requestFocus();
+        }
+        return !isValid;
+
+    }
+
+    protected boolean isNotValidEmail(EditText et) {
+        boolean isValid= (!TextUtils.isEmpty(et.getText().toString()) && Patterns.EMAIL_ADDRESS.matcher(et.getText().toString()).matches());
+        if(!isValid){
+            et.setError(getString(R.string.error_invalid_email));
+            et.requestFocus();
+        }
+        return !isValid;
+
+    }
 
     protected void sendRequestToServer(JSONObject jsonObject) {
         show();
@@ -102,7 +139,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    protected JSONObject getBaseJSONRequestObj(String serviceName,String serviceMethod) {
+    protected JSONObject getBaseJSONRequestObj(String serviceName, String serviceMethod) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("serviceName", serviceName);
@@ -136,36 +173,37 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void getUserName() {
-        TextView textViewUserName= (TextView)findViewById(R.id.textViewTextUserName);
-        textViewUserName.setText("Hello "+getData("userName")+",");
+        TextView textViewUserName = (TextView) findViewById(R.id.textViewTextUserName);
+        textViewUserName.setText("Hello " + "Ram" + ",");//getData("userName")
 
     }
 
-    public void openActivity(View view){
+    public void openActivity(View view) {
 
-        String TAG=view.getTag().toString();
-        Class c= null;
+        String TAG = view.getTag().toString();
+        Class c = null;
         try {
-            c = Class.forName("com.finsall.activity."+TAG);
+            c = Class.forName("com.finsall.activity." + TAG);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        if(c!=null) {
+        if (c != null) {
             Intent intent = new Intent(this, c);
             startActivity(intent);
         }
     }
-    protected void saveData(String key,String value){
-        SharedPreferences sf= getSharedPreferences("MyPref",
+
+    protected void saveData(String key, String value) {
+        SharedPreferences sf = getSharedPreferences("MyPref",
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sf.edit();
         editor.putString(key, value);
         editor.commit();
     }
 
-    protected String getData(String key){
-        SharedPreferences sf= getSharedPreferences("MyPref",
+    protected String getData(String key) {
+        SharedPreferences sf = getSharedPreferences("MyPref",
                 Context.MODE_PRIVATE);
-        return sf.getString(key,null);
+        return sf.getString(key, null);
     }
 }

@@ -64,7 +64,22 @@
         <activity
             android:name=".activity.KYCCustomerDetailActivity"
             android:label="Customer Details" />
-        <activity android:name=".activity.BAProfileActivity"></activity>
+        <activity android:name=".activity.BAProfileActivity" />
+        <activity
+            android:name=".activity.BAAccountActivity"
+            android:label="My Account" />
+        <activity
+            android:name=".activity.AboutUsActivity"
+            android:label="About Finsall" />
+        <activity
+            android:name=".activity.FAQActivity"
+            android:label="FAQs" />
+        <activity
+            android:name=".activity.TrackActivity"
+            android:label="Track Application" />
+        <activity
+            android:name=".activity.NotificationActivity"
+            android:label="Notification BA"></activity>
     </application>
 
 </manifest>

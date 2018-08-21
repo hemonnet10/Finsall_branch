@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CustomerDetailActivity">
+    tools:context=".activity.KYCCustomerDetailActivity">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -31,6 +31,7 @@
                 android:layout_below="@+id/textView1"
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
+                android:maxLength="20"
                 android:hint=""
                 android:inputType="text" />
 
@@ -49,6 +50,7 @@
                 android:layout_below="@+id/textView2"
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
+                android:maxLength="10"
                 android:hint=""
                 android:inputType="number|phone" />
 
@@ -68,6 +70,7 @@
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
                 android:hint=""
+                android:maxLength="20"
                 android:inputType="textEmailAddress" />
 
 
@@ -88,6 +91,7 @@
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
                 android:hint=""
+                android:maxLength="10"
                 android:inputType="text" />
 
             <TextView
@@ -105,6 +109,7 @@
                 android:layout_below="@+id/textView5"
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
+                android:maxLength="12"
                 android:hint=""
                 android:inputType="number" />
 
@@ -126,6 +131,7 @@
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
                 android:hint=""
+                android:maxLength="20"
                 android:inputType="text" />
 
             <TextView
@@ -136,12 +142,14 @@
                 android:layout_margin="@dimen/form_margin"
                 android:text="Date of Birth" />
 
-            <DatePicker
-                android:id="@+id/datePickerDOB"
+            <EditText
+                android:id="@+id/etDOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView7"
                 android:layout_margin="@dimen/form_margin"
+                android:maxLength="10"
+                android:hint="Enter Date of Birth (DD/MM/YYYY)"
                 />
 
 
@@ -149,7 +157,7 @@
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/datePickerDOB"
+                android:layout_below="@+id/etDOB"
                 android:layout_margin="@dimen/form_margin"
                 android:text="Address Line 1" />
 
@@ -161,6 +169,7 @@
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
                 android:hint=""
+                android:maxLength="30"
                 android:inputType="text" />
 
             <TextView
@@ -179,6 +188,7 @@
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
                 android:hint=""
+                android:maxLength="30"
                 android:inputType="text" />
 
             <TextView
@@ -197,6 +207,7 @@
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
                 android:hint=""
+                android:maxLength="20"
                 android:inputType="text" />
 
 
@@ -233,6 +244,7 @@
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
                 android:hint=""
+                android:maxLength="6"
                 android:inputType="number" />
 
 

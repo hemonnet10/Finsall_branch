@@ -167,6 +167,105 @@
         </HorizontalScrollView>
 
 
+        <TextView
+            android:id="@+id/textViewTextServices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/horizontalScrollView"
+            android:text="Our Services " />
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTextServices">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutGal4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp">
+
+                    <ImageView
+                        android:id="@+id/imageServices1"
+                        android:layout_width="@dimen/image_offer_dimension_width"
+                        android:layout_height="@dimen/image_offer_dimension_height"
+                        android:gravity="center"
+                        app:srcCompat="@drawable/service1" />
+
+                    <TextView
+                        android:id="@+id/textServices1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageServices1"
+                        android:background="@android:color/holo_blue_dark"
+                        android:gravity="center"
+                        android:text="Service1"
+                        android:textColor="@android:color/white" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutGal5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_toRightOf="@+id/relativeLayoutGal4">
+
+                    <ImageView
+                        android:id="@+id/imageService2"
+                        android:layout_width="@dimen/image_offer_dimension_width"
+                        android:layout_height="@dimen/image_offer_dimension_height"
+                        android:gravity="center"
+                        app:srcCompat="@drawable/service2" />
+
+                    <TextView
+                        android:id="@+id/textService2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageService2"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/holo_blue_dark"
+                        android:gravity="center"
+                        android:text="Service2"
+                        android:textColor="@android:color/white"
+
+                        />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutGal6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_toRightOf="@+id/relativeLayoutGal5">
+
+                    <ImageView
+                        android:id="@+id/imageService3"
+                        android:layout_width="@dimen/image_offer_dimension_width"
+                        android:layout_height="@dimen/image_offer_dimension_height"
+                        android:gravity="center"
+                        app:srcCompat="@drawable/service3" />
+
+                    <TextView
+                        android:id="@+id/textService3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageService3"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/holo_blue_dark"
+                        android:gravity="center"
+                        android:text="Service3"
+                        android:textColor="@android:color/white"
+
+                        />
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </HorizontalScrollView>
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation"
             android:layout_width="match_parent"

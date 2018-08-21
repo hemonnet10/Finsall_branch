@@ -20,4 +20,8 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_delete">DeleteActivity</string>
     <string name="punch_line">You are at the best phase of your life.Do not hesitate to connect me for any assistance.</string>
+
+
+    <string name="error_invalid_date">Enter a valid date</string>
+
 </resources>

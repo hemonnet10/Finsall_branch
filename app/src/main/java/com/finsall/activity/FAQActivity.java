@@ -7,13 +7,12 @@ import com.finsall.R;
 
 import org.json.JSONObject;
 
-public class BAProfileActivity extends BaseActivity {
+public class FAQActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_baprofile);
-     // setTitle(getData("userName"));
+        setContentView(R.layout.activity_faq);
     }
 
     @Override

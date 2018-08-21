@@ -16,82 +16,113 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp">
         <RelativeLayout
+            android:id="@+id/rlPhoto"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp">
+            android:layout_height="wrap_content"
+            android:background="@drawable/profile_background">
+
+            <ImageView
+                android:id="@+id/imageViewPhoto"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="@dimen/form_margin"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/user_pic"
+                />
+            <Button
+                android:id="@+id/buttonCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageViewPhoto"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/user_pic_camera"
+                />
+            <TextView
+                android:id="@+id/tvProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonCamera"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="@dimen/form_margin"
+
+                android:text="Upload New Photo" />
 
         </RelativeLayout>
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/form_margin"
-                android:text="Name*" />
+                android:layout_below="@+id/rlPhoto"
 
-            <EditText
-                android:id="@+id/etName"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Title" />
+
+            <Spinner
+                android:id="@+id/spinnerTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView1"
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
-                android:hint=""
-                android:inputType="text" />
+                 />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etName"
+                android:layout_below="@+id/spinnerTitle"
                 android:layout_margin="@dimen/form_margin"
-                android:text="Mobile Number*" />
+                android:text="First Name" />
 
             <EditText
-                android:id="@+id/etMobileNo"
+                android:id="@+id/etFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView2"
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
+                android:maxLength="15"
                 android:hint=""
-                android:inputType="number|phone" />
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etMobileNo"
+                android:layout_below="@+id/etFirstName"
                 android:layout_margin="@dimen/form_margin"
-                android:text="Email Id*" />
+                android:text="Last Name" />
 
             <EditText
-                android:id="@+id/etEmailId"
+                android:id="@+id/etLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView3"
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
+                android:maxLength="15"
                 android:hint=""
-                android:inputType="textEmailAddress" />
+                android:inputType="text" />
 
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
-                android:layout_below="@+id/etEmailId"
+                android:layout_below="@+id/etLastName"
 
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/form_margin"
-                android:text="PAN Card Number*" />
+                android:text="Business Associate" />
 
             <EditText
-                android:id="@+id/etPan"
+                android:id="@+id/etBA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView4"
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
+                android:maxLength="20"
                 android:hint=""
                 android:inputType="text" />
 
@@ -99,77 +130,44 @@
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etPan"
+                android:layout_below="@+id/etBA"
                 android:layout_margin="@dimen/form_margin"
-                android:text="AadhaarNumber /Virtual ID*" />
+                android:text="House Number" />
 
             <EditText
-                android:id="@+id/etAdhaarOrVID"
+                android:id="@+id/etHNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView5"
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
                 android:hint=""
-                android:inputType="number" />
+                android:maxLength="10"
+                android:inputType="text" />
 
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etAdhaarOrVID"
+                android:layout_below="@+id/etHNo"
                 android:layout_margin="@dimen/form_margin"
 
-                android:text="Father's Name" />
-
-            <EditText
-                android:id="@+id/etFatherName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView6"
-                android:layout_margin="@dimen/form_margin"
-                android:ems="10"
-                android:hint=""
-                android:inputType="text" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etFatherName"
-                android:layout_margin="@dimen/form_margin"
-                android:text="Date of Birth" />
-
-            <DatePicker
-                android:id="@+id/datePickerDOB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView7"
-                android:layout_margin="@dimen/form_margin"
-                />
-
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/datePickerDOB"
-                android:layout_margin="@dimen/form_margin"
                 android:text="Address Line 1" />
 
             <EditText
                 android:id="@+id/etAddressLine1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView8"
+                android:layout_below="@+id/textView6"
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
                 android:hint=""
+                android:maxLength="30"
                 android:inputType="text" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/etAddressLine1"
@@ -180,11 +178,13 @@
                 android:id="@+id/etAddressLine2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView9"
+                android:layout_below="@+id/textView7"
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
                 android:hint=""
+                android:maxLength="30"
                 android:inputType="text" />
+
 
             <TextView
                 android:id="@+id/textView10"
@@ -240,6 +240,183 @@
                 android:hint=""
                 android:inputType="number" />
 
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etPinCode"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Landline" />
+
+            <EditText
+                android:id="@+id/etLandLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView13"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint=""
+                android:inputType="number" />
+
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etLandLine"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Mobile Number" />
+
+            <EditText
+                android:id="@+id/etMobileNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView14"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:maxLength="10"
+                android:inputType="number|phone" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etMobileNo"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Email Id" />
+
+            <EditText
+                android:id="@+id/etEmailId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView15"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint=""
+                android:inputType="textEmailAddress" />
+
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/etEmailId"
+
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/form_margin"
+                android:text="PAN Card Number" />
+
+            <EditText
+                android:id="@+id/etPan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView16"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint=""
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etPan"
+                android:layout_margin="@dimen/form_margin"
+                android:text="AadhaarNumber" />
+
+            <EditText
+                android:id="@+id/etAdhaar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView17"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint=""
+                android:inputType="number" />
+
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etAdhaar"
+                android:layout_margin="@dimen/form_margin"
+
+                android:text="Bank Account Number" />
+
+            <EditText
+                android:id="@+id/etBankAccountNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView18"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint=""
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etBankAccountNumber"
+                android:layout_margin="@dimen/form_margin"
+
+                android:text="Bank Name" />
+
+            <EditText
+                android:id="@+id/etBankName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView19"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint=""
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etBankName"
+                android:layout_margin="@dimen/form_margin"
+
+                android:text="Bank IFSC" />
+
+            <EditText
+                android:id="@+id/etBankIFSC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView20"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint=""
+                android:inputType="text" />
+
+
+
+            <Button
+                android:id="@+id/buttonHelpline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etBankIFSC"
+                android:layout_marginTop="@dimen/form_margin"
+                android:layout_marginBottom="@dimen/form_margin"
+                android:layout_marginLeft="@dimen/form_margin"
+                android:background="@android:color/black"
+                android:textColor="@android:color/white"
+                android:text="Helpline" />
+
+            <Button
+                android:id="@+id/buttonHelpline2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etBankIFSC"
+                android:layout_toRightOf="@+id/buttonHelpline1"
+                android:layout_marginTop="@dimen/form_margin"
+                android:layout_marginBottom="@dimen/form_margin"
+                android:layout_marginRight="@dimen/form_margin"
+                android:background="@android:color/holo_blue_bright"
+
+                android:text="0120 45678432" />
 
 
 
@@ -247,11 +424,21 @@
                 android:id="@+id/buttonSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etPinCode"
+                android:layout_below="@+id/buttonHelpline1"
                 android:layout_margin="@dimen/form_margin"
                 android:background="@android:color/holo_blue_bright"
-                android:onClick="updateCustomerDetailFromKYC"
-                android:text="SUBMIT CUSTOMER INFORMATION" />
+                android:onClick="updateBAProfile"
+                android:text="UPDATE" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonSubmit"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/form_margin"
+                android:gravity="center"
+                android:text="For any updation please write to us at info@finsall.com" />
 
         </RelativeLayout>
     </ScrollView>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.finsall.R;
 
@@ -13,6 +14,7 @@ import org.json.JSONObject;
 public class OTPActivity extends BaseActivity {
 
     String requestFrom;
+    EditText editTextOTP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,7 @@ public class OTPActivity extends BaseActivity {
             ((Button)findViewById(R.id.buttonValidateOTP)).setText("SUBMIT");
         }
 
+        editTextOTP=(EditText)findViewById(R.id.editTextOTP);
     }
 
     @Override
@@ -36,10 +39,21 @@ public class OTPActivity extends BaseActivity {
 
         if("CUSTOMER_DETAIL".equals(requestFrom)) {
 
-            Intent intent = new Intent(this, CustomerRejectionActivity.class);
-            startActivity(intent);
+            if(!editTextOTP.getText().equals("1234")){// to be replaced by server resp
+                Intent intent = new Intent(this, IndividualKYCActivity.class);
+                startActivity(intent);
+            }
+            else{
+                Intent intent = new Intent(this, CustomerRejectionActivity.class);
+                startActivity(intent);
+
+            }
 
         }
+        else if(requestFrom==null) {
+                Intent intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+            }
         }
 
     @Override
@@ -50,14 +64,6 @@ public class OTPActivity extends BaseActivity {
 
     public void verifyOTP(View view) {
 
-        if(requestFrom==null) {
-            Intent intent = new Intent(this, HomeActivity.class);
-            startActivity(intent);
-        }
-        else if(!"CUSTOMER_DETAIL".equals(requestFrom)){
-            Intent intent = new Intent(this, IndividualKYCActivity.class);
-            startActivity(intent);
-        }
         handleSuccessResult(null);
 
     }

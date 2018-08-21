@@ -60,7 +60,7 @@ public class IndividualKYCActivity extends BaseActivity {
 
     public void validateOTP(View view) {
 
-        Intent intent= new Intent(this,CustomerDetailActivity.class);
+        Intent intent= new Intent(this,KYCCustomerDetailActivity.class);
 
         intent.putExtra("isNewUser","");
         startActivity(intent);

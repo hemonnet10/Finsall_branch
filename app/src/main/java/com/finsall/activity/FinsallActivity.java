@@ -29,10 +29,10 @@ public class FinsallActivity extends BaseActivity {
 
             public void run() {
                 Intent intent=null;
-                if(getData("user")==null)
+                if(getData("user")!=null)
                 {
-                    intent = new Intent(FinsallActivity.this, KYCCustomerDetailActivity.class);
-                    //intent = new Intent(FinsallActivity.this, HomeActivity.class);
+                   // intent = new Intent(FinsallActivity.this, BAProfileActivity.class);
+                    intent = new Intent(FinsallActivity.this, HomeActivity.class);
                 }
                 else{
                     intent = new Intent(FinsallActivity.this, LoginActivity.class);

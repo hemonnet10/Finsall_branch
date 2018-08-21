@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.BAAccountActivity">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/form_margin"
+                android:textStyle="bold"
+                android:text="For The Week" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tv1"
+                android:background="@android:color/darker_gray"/>
+            <RelativeLayout
+                android:id="@+id/rlLeft1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/form_margin"
+                android:layout_below="@+id/tv1">
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="Loan Disbursed (Count)" />
+
+                <TextView
+                    android:id="@+id/tv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv2"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="Loan Disbursed (Value)" />
+
+                <TextView
+                    android:id="@+id/tv6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv4"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="Repayments (Value)" />
+
+                <TextView
+                    android:id="@+id/tv8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv6"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="Default (Value)" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tv1"
+                android:layout_marginLeft="150dp"
+                android:layout_toRightOf="@+id/rlLeft1">
+
+                <TextView
+                    android:id="@+id/tvLoanDisbursedCountWeek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="0" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tvLoanDisbursedCountWeek"
+                    android:background="@android:color/darker_gray"/>
+                <TextView
+                    android:id="@+id/tvLoanDisbursedValueWeek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvLoanDisbursedCountWeek"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="0" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tvLoanDisbursedValueWeek"
+                    android:background="@android:color/darker_gray"/>
+                <TextView
+                    android:id="@+id/tvRepaymentValueWeek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvLoanDisbursedValueWeek"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="0" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tvRepaymentValueWeek"
+                    android:background="@android:color/darker_gray"/>
+                <TextView
+                    android:id="@+id/tvDefaultValueWeek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvRepaymentValueWeek"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="0" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tvDefaultValueWeek"
+                    android:background="@android:color/darker_gray"/>
+
+            </RelativeLayout>
+
+
+
+
+
+            <TextView
+                android:id="@+id/tv11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/form_margin"
+                android:layout_below="@+id/rlLeft1"
+                android:textStyle="bold"
+                android:text="For The Year" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tv11"
+                android:background="@android:color/darker_gray"/>
+            <RelativeLayout
+                android:id="@+id/rlLeft2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/form_margin"
+                android:layout_below="@+id/tv11">
+
+                <TextView
+                    android:id="@+id/tv22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="Loan Disbursed (Count)" />
+
+                <TextView
+                    android:id="@+id/tv23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv22"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="Loan Disbursed (Value)" />
+
+                <TextView
+                    android:id="@+id/tv24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv23"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="Repayments (Value)" />
+
+                <TextView
+                    android:id="@+id/tv25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv24"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="Default (Value)" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tv11"
+                android:layout_marginLeft="150dp"
+                android:layout_toRightOf="@+id/rlLeft2">
+
+                <TextView
+                    android:id="@+id/tvLoanDisbursedCountYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="0" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tvLoanDisbursedCountYear"
+                    android:background="@android:color/darker_gray"/>
+                <TextView
+                    android:id="@+id/tvLoanDisbursedValueYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvLoanDisbursedCountYear"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="0" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tvLoanDisbursedValueYear"
+                    android:background="@android:color/darker_gray"/>
+                <TextView
+                    android:id="@+id/tvRepaymentValueYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvLoanDisbursedValueYear"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="0" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tvRepaymentValueYear"
+                    android:background="@android:color/darker_gray"/>
+                <TextView
+                    android:id="@+id/tvDefaultValueYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvRepaymentValueYear"
+                    android:layout_marginBottom="@dimen/form_margin"
+                    android:text="0" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tvDefaultValueYear"
+                    android:background="@android:color/darker_gray"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

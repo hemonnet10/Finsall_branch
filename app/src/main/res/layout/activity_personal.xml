@@ -82,6 +82,9 @@
                 android:id="@+id/relativeLayoutOption1"
                 android:layout_width="@dimen/image_button_dimension"
                 android:layout_height="@dimen/image_button_dimension"
+                android:onClick="openActivity"
+                android:tag="BAProfileActivity"
+
                 android:background="@android:color/white">
 
                 <ImageView
@@ -90,8 +93,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:onClick="openActivity"
-                    android:tag="MyProfileActivity"
                     app:srcCompat="@drawable/my_profile" />
 
                 <TextView
@@ -114,7 +115,8 @@
                 android:layout_width="@dimen/image_button_dimension"
                 android:layout_height="@dimen/image_button_dimension"
                 android:layout_toRightOf="@+id/relativeLayoutOptionMargin1"
-
+                android:onClick="openActivity"
+                android:tag="BAAccountActivity"
                 android:background="@android:color/white">
 
                 <ImageView
@@ -123,8 +125,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:onClick="openActivity"
-                    android:tag="MyAccountActivity"
                     app:srcCompat="@drawable/my_account" />
 
                 <TextView

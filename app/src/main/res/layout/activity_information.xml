@@ -82,6 +82,8 @@
                 android:id="@+id/relativeLayoutOption1"
                 android:layout_width="@dimen/image_button_dimension"
                 android:layout_height="@dimen/image_button_dimension"
+                android:onClick="openActivity"
+                android:tag="AboutUsActivity"
                 android:background="@android:color/white">
 
                 <ImageView
@@ -112,7 +114,8 @@
                 android:layout_width="@dimen/image_button_dimension"
                 android:layout_height="@dimen/image_button_dimension"
                 android:layout_toRightOf="@+id/relativeLayoutOptionMargin1"
-
+                android:onClick="openActivity"
+                android:tag="FAQActivity"
                 android:background="@android:color/white">
 
                 <ImageView
@@ -144,7 +147,8 @@
                 android:layout_width="@dimen/image_button_dimension"
                 android:layout_height="@dimen/image_button_dimension"
                 android:layout_below="@+id/relativeLayoutPartition"
-
+                android:onClick="openActivity"
+                android:tag="TrackActivity"
                 android:background="@android:color/white">
 
                 <ImageView
@@ -178,7 +182,8 @@
                 android:layout_height="@dimen/image_button_dimension"
                 android:layout_below="@+id/relativeLayoutPartition"
                 android:layout_toRightOf="@+id/relativeLayoutOptionMargin3"
-
+                android:onClick="openActivity"
+                android:tag="NotificationActivity"
                 android:background="@android:color/white">
 
                 <ImageView
