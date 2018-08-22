@@ -27,6 +27,9 @@ public class FingerPrintScanningActivity extends BaseActivity {
 //        tvRejectionResason=(TextView)findViewById(R.id.tvLoanRejectedReason);
 //
 //        tvRejectionResason.setText("Rejection Reason...");
+
+        Intent intent=new Intent(this,CaptureALADocumentsActivity.class);
+        startActivity(intent);
     }
 
     @Override

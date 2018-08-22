@@ -21,13 +21,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/profile_background">
 
-            <ImageView
+            <com.finsall.util.HexagonMaskView
                 android:id="@+id/imageViewPhoto"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="@dimen/form_margin"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/user_pic"
+                android:src="@drawable/user_pic"
+                android:background="@android:color/transparent"
                 />
             <Button
                 android:id="@+id/buttonCamera"
@@ -37,6 +38,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/user_pic_camera"
                 android:adjustViewBounds="true"
+                android:onClick="changeProfilePic"
                 android:scaleType="fitCenter"
                 />
             <TextView

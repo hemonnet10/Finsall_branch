@@ -35,7 +35,7 @@ public class FinsallActivity extends BaseActivity {
                     intent = new Intent(FinsallActivity.this, HomeActivity.class);
                 }
                 else{
-                    intent = new Intent(FinsallActivity.this, HomeActivity.class);
+                    intent = new Intent(FinsallActivity.this, CaptureALADocumentsActivity.class);
                     //intent = new Intent(FinsallActivity.this, LoginActivity.class);
                 }
                 startActivity(intent);

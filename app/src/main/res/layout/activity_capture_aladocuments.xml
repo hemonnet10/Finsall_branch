@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CaptureALADocumentsActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlala1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/form_margin"
+            android:background="@android:color/holo_blue_bright"
+            android:onClick="scanDocuments"
+            android:text="SIGN ALL PAGES OF ALA" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlala2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/myImageViewPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rlbottom"
+            android:background="@drawable/profile_background" />
+
+        <TextView
+            android:id="@+id/myImageViewText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/myImageViewPreview"
+            android:layout_alignLeft="@+id/myImageViewPreview"
+            android:layout_alignRight="@+id/myImageViewPreview"
+            android:layout_alignTop="@+id/myImageViewPreview"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="1dp"
+            android:gravity="center"
+            android:text="YOUR CAMERA IMAGE HERE"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/buttonRetake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_above="@+id/rlbottom"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/form_margin"
+            android:background="@android:color/holo_blue_bright"
+            android:onClick="scanDocuments"
+            android:text="RETAKE" />
+
+        <RelativeLayout
+            android:id="@+id/rlbottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/darker_gray">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+
+                android:layout_centerHorizontal="true"
+                android:onClick="captureImage"
+                android:src="@drawable/user_pic_camera"
+                android:text="" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_alignParentButton="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/form_margin"
+        android:background="@android:color/holo_blue_bright"
+        android:onClick="submitDocuments"
+        android:text="SUBMIT" />
+
+</android.support.constraint.ConstraintLayout>
