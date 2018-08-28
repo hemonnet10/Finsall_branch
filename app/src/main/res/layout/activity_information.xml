@@ -88,8 +88,9 @@
 
                 <ImageView
                     android:id="@+id/imageOffer1"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="@dimen/image_icon_dimensions"
+                    android:layout_height="@dimen/image_icon_dimensions"
+
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:adjustViewBounds="true"
@@ -122,8 +123,9 @@
 
                 <ImageView
                     android:id="@+id/imageOffer2"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="@dimen/image_icon_dimensions"
+                    android:layout_height="@dimen/image_icon_dimensions"
+
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:adjustViewBounds="true"
@@ -156,8 +158,9 @@
 
                 <ImageView
                     android:id="@+id/imageTrack"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="@dimen/image_icon_dimensions"
+                    android:layout_height="@dimen/image_icon_dimensions"
+
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:adjustViewBounds="true"
@@ -193,8 +196,9 @@
 
                 <ImageView
                     android:id="@+id/imageNotification"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="@dimen/image_icon_dimensions"
+                    android:layout_height="@dimen/image_icon_dimensions"
+
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:adjustViewBounds="true"
