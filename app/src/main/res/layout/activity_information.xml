@@ -18,8 +18,8 @@
             android:id="@+id/imageViewBanner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
             android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/banner" />
 
 
@@ -73,149 +73,156 @@
         <RelativeLayout
             android:id="@+id/relativeLayoutGal1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@+id/imageViewBanner"
             android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_margin="20dp"
-            android:gravity="center_vertical">
+            android:gravity="center">
 
             <RelativeLayout
-                android:id="@+id/relativeLayoutOption1"
-                android:layout_width="@dimen/image_button_dimension"
-                android:layout_height="@dimen/image_button_dimension"
-                android:onClick="openActivity"
-                android:tag="AboutUsActivity"
-                android:background="@android:color/white">
+                android:id="@+id/relativeLayoutGal001"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
 
-                <ImageView
-                    android:id="@+id/imageOffer1"
-                    android:layout_width="@dimen/image_icon_dimensions"
-                    android:layout_height="@dimen/image_icon_dimensions"
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutOption1"
+                    android:layout_width="@dimen/image_button_dimension"
+                    android:layout_height="@dimen/image_button_dimension"
+                    android:background="@android:color/white"
+                    android:onClick="openActivity"
+                    android:tag="AboutUsActivity">
 
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/about" />
+                    <ImageView
+                        android:id="@+id/imageOffer1"
+                        android:layout_width="@dimen/image_icon_dimensions"
+                        android:layout_height="@dimen/image_icon_dimensions"
 
-                <TextView
-                    android:id="@+id/textOffer1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imageOffer1"
-                    android:layout_centerHorizontal="true"
-                    android:text="About FinsAll" />
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/about" />
+
+                    <TextView
+                        android:id="@+id/textOffer1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageOffer1"
+                        android:layout_centerHorizontal="true"
+                        android:text="About FinsAll" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutOptionMargin1"
+                    android:layout_width="20dp"
+                    android:layout_height="@dimen/image_button_dimension"
+                    android:layout_toRightOf="@+id/relativeLayoutOption1" />
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutOption2"
+                    android:layout_width="@dimen/image_button_dimension"
+                    android:layout_height="@dimen/image_button_dimension"
+                    android:layout_toRightOf="@+id/relativeLayoutOptionMargin1"
+                    android:background="@android:color/white"
+                    android:onClick="openActivity"
+                    android:tag="FAQActivity">
+
+                    <ImageView
+                        android:id="@+id/imageOffer2"
+                        android:layout_width="@dimen/image_icon_dimensions"
+                        android:layout_height="@dimen/image_icon_dimensions"
+
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/faq" />
+
+                    <TextView
+                        android:id="@+id/textFaqs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageOffer2"
+                        android:layout_centerHorizontal="true"
+                        android:text="FAQs" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutPartition"
+                    android:layout_width="@dimen/image_button_dimension"
+                    android:layout_height="20dp"
+                    android:layout_below="@+id/relativeLayoutOption1" />
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutOption3"
+                    android:layout_width="@dimen/image_button_dimension"
+                    android:layout_height="@dimen/image_button_dimension"
+                    android:layout_below="@+id/relativeLayoutPartition"
+                    android:background="@android:color/white"
+                    android:onClick="openActivity"
+                    android:tag="TrackActivity">
+
+                    <ImageView
+                        android:id="@+id/imageTrack"
+                        android:layout_width="@dimen/image_icon_dimensions"
+                        android:layout_height="@dimen/image_icon_dimensions"
+
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/track" />
+
+                    <TextView
+                        android:id="@+id/textAboutFinsall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageTrack"
+                        android:layout_centerHorizontal="true"
+                        android:text="Track" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutOptionMargin3"
+                    android:layout_width="20dp"
+                    android:layout_height="@dimen/image_button_dimension"
+                    android:layout_below="@+id/relativeLayoutPartition"
+
+                    android:layout_toRightOf="@+id/relativeLayoutOption3" />
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayoutOption4"
+                    android:layout_width="@dimen/image_button_dimension"
+                    android:layout_height="@dimen/image_button_dimension"
+                    android:layout_below="@+id/relativeLayoutPartition"
+                    android:layout_toRightOf="@+id/relativeLayoutOptionMargin3"
+                    android:background="@android:color/white"
+                    android:onClick="openActivity"
+                    android:tag="NotificationActivity">
+
+                    <ImageView
+                        android:id="@+id/imageNotification"
+                        android:layout_width="@dimen/image_icon_dimensions"
+                        android:layout_height="@dimen/image_icon_dimensions"
+
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/notification" />
+
+                    <TextView
+                        android:id="@+id/textNotificationBA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageNotification"
+                        android:layout_centerHorizontal="true"
+                        android:text="Notification BA" />
+                </RelativeLayout>
+
             </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutOptionMargin1"
-                android:layout_width="20dp"
-                android:layout_height="@dimen/image_button_dimension"
-                android:layout_toRightOf="@+id/relativeLayoutOption1" />
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutOption2"
-                android:layout_width="@dimen/image_button_dimension"
-                android:layout_height="@dimen/image_button_dimension"
-                android:layout_toRightOf="@+id/relativeLayoutOptionMargin1"
-                android:onClick="openActivity"
-                android:tag="FAQActivity"
-                android:background="@android:color/white">
-
-                <ImageView
-                    android:id="@+id/imageOffer2"
-                    android:layout_width="@dimen/image_icon_dimensions"
-                    android:layout_height="@dimen/image_icon_dimensions"
-
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/faq" />
-
-                <TextView
-                    android:id="@+id/textFaqs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imageOffer2"
-                    android:layout_centerHorizontal="true"
-                    android:text="FAQs" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutPartition"
-                android:layout_width="@dimen/image_button_dimension"
-                android:layout_height="20dp"
-                android:layout_below="@+id/relativeLayoutOption1" />
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutOption3"
-                android:layout_width="@dimen/image_button_dimension"
-                android:layout_height="@dimen/image_button_dimension"
-                android:layout_below="@+id/relativeLayoutPartition"
-                android:onClick="openActivity"
-                android:tag="TrackActivity"
-                android:background="@android:color/white">
-
-                <ImageView
-                    android:id="@+id/imageTrack"
-                    android:layout_width="@dimen/image_icon_dimensions"
-                    android:layout_height="@dimen/image_icon_dimensions"
-
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/track" />
-
-                <TextView
-                    android:id="@+id/textAboutFinsall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imageTrack"
-                    android:layout_centerHorizontal="true"
-                    android:text="Track" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutOptionMargin3"
-                android:layout_width="20dp"
-                android:layout_height="@dimen/image_button_dimension"
-                android:layout_below="@+id/relativeLayoutPartition"
-
-                android:layout_toRightOf="@+id/relativeLayoutOption3" />
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutOption4"
-                android:layout_width="@dimen/image_button_dimension"
-                android:layout_height="@dimen/image_button_dimension"
-                android:layout_below="@+id/relativeLayoutPartition"
-                android:layout_toRightOf="@+id/relativeLayoutOptionMargin3"
-                android:onClick="openActivity"
-                android:tag="NotificationActivity"
-                android:background="@android:color/white">
-
-                <ImageView
-                    android:id="@+id/imageNotification"
-                    android:layout_width="@dimen/image_icon_dimensions"
-                    android:layout_height="@dimen/image_icon_dimensions"
-
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/notification" />
-
-                <TextView
-                    android:id="@+id/textNotificationBA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imageNotification"
-                    android:layout_centerHorizontal="true"
-                    android:text="Notification BA" />
-            </RelativeLayout>
-
         </RelativeLayout>
     </RelativeLayout>
-
 </LinearLayout>

@@ -346,6 +346,8 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="0dp"
             android:layout_marginStart="0dp"
+            app:itemTextAppearanceActive="@style/TextStyleBNV"
+            app:itemTextAppearanceInactive="@style/TextStyleBNV"
             android:background="?android:attr/windowBackground"
             app:menu="@menu/navigation_below" />
 

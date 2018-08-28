@@ -101,8 +101,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void sendRequestToServer(JSONObject jsonObject, String requestType, boolean isCachable) {
         if(isCachable) {
             JSONObject cachedResponse=  getDataFromCache(jsonObject);
-          //  handleSuccessResult(cachedResponse);
-            //return;
+            try {
+                handleSuccessResult(cachedResponse,requestType);
+                return;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
         }
         show();
         Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024);
@@ -144,8 +149,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         try {
             String key=jsonObject.getString("serviceName")+"|"+jsonObject.getString("serviceMethod");
             String value=getData(key);
-          //  JSON json= new JSONObject();
-            //json.p
+            if(value!=null)
+            return new JSONObject(value);
         } catch (JSONException e) {
             e.printStackTrace();
         }

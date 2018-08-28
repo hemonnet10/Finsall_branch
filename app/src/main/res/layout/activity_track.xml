@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
         <RelativeLayout
             android:id="@+id/rlAadhaar"
             android:layout_width="match_parent"
@@ -22,11 +24,9 @@
             >
             <EditText
                 android:id="@+id/etTrackNo"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/form_margin"
-                android:layout_marginBottom="@dimen/form_margin"
-                android:layout_marginLeft="@dimen/form_margin"
+                android:layout_margin="@dimen/form_margin"
                 android:ems="10"
                 android:maxLength="20"
                 android:hint="Enter ALA number or the name of applicant"
@@ -34,12 +34,10 @@
 
             <Button
                 android:id="@+id/textView5"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/etTrackNo"
-                android:layout_marginTop="@dimen/form_margin"
-                android:layout_marginBottom="@dimen/form_margin"
-                android:layout_marginRight="@dimen/form_margin"
+                android:layout_below="@+id/etTrackNo"
+                android:layout_margin="@dimen/form_margin"
                 android:background="@android:color/holo_blue_bright"
                 android:onClick="track"
                 android:text="TRACK" />
