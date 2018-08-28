@@ -190,7 +190,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void getUserName() {
         TextView textViewUserName = (TextView) findViewById(R.id.textViewTextUserName);
-        textViewUserName.setText("Hello " + "Ram" + ",");//getData("userName")
+        textViewUserName.setText("Hello " + getData("userName") + ",");//getData("userName")
 
     }
 

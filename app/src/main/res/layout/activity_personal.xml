@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
-            android:background="@drawable/banner" />
+            app:srcCompat="@drawable/banner" />
 
         <RelativeLayout
             android:id="@+id/relativeLayout1"
