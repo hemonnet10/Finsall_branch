@@ -3,12 +3,6 @@ package com.finsall.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.finsall.R;
 
@@ -29,14 +23,15 @@ public class FinsallActivity extends BaseActivity {
 
             public void run() {
                 Intent intent=null;
+
                 if(getData("user")!=null)
                 {
-
+                   // intent = new Intent(FinsallActivity.this, CaptureALADocumentsActivity.class);
                     intent = new Intent(FinsallActivity.this, HomeActivity.class);
                 }
                 else{
-                    intent = new Intent(FinsallActivity.this, CaptureALADocumentsActivity.class);
-                    //intent = new Intent(FinsallActivity.this, LoginActivity.class);
+                   // intent = new Intent(FinsallActivity.this, CustomerDetailActivity.class);
+                    intent = new Intent(FinsallActivity.this, LoginActivity.class);
                 }
                 startActivity(intent);
                 // close this activity
@@ -50,12 +45,12 @@ public class FinsallActivity extends BaseActivity {
     }
 
     @Override
-    protected void handleSuccessResult(JSONObject success) {
+    protected void handleSuccessResult(JSONObject success, String requestType) {
 
     }
 
     @Override
-    protected void handleErrorResult(String error) {
+    protected void handleErrorResult(String error, String requestType) {
 
     }
 

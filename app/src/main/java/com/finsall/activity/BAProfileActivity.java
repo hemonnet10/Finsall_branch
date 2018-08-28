@@ -1,18 +1,6 @@
 package com.finsall.activity;
 
-import android.Manifest;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -22,17 +10,17 @@ import android.widget.Toast;
 import com.finsall.R;
 import com.finsall.dto.InsuranceCompany;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.ArrayList;
 
 public class BAProfileActivity extends BaseCameraActivity {
 
     public ImageView mProfilePic;
     private Spinner spinnerTitle;
+    private Spinner spinnerState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +28,7 @@ public class BAProfileActivity extends BaseCameraActivity {
         setContentView(R.layout.activity_baprofile);
         setTitle(getData("userName"));
 
+        spinnerState = (Spinner) findViewById(R.id.spinnerState);
 
         spinnerTitle = (Spinner) findViewById(R.id.spinnerTitle);
         String titleList[] = {"Mr", "Mrs", "Miss", "Ms"};
@@ -50,22 +39,46 @@ public class BAProfileActivity extends BaseCameraActivity {
 
         mProfilePic = (ImageView) findViewById(R.id.imageViewPhoto);
 
-    }
-
-    @Override
-    protected void handleSuccessResult(JSONObject success) {
+        sendRequestToServer(getBaseJSONRequestObj("FinsAllService","getState"),"getAllState", false);
 
     }
 
     @Override
-    protected void handleErrorResult(String error) {
+    protected void handleSuccessResult(JSONObject success, String requestType) throws JSONException {
+
+        if(requestType.equals("getAllState")){
+            populateState(success.getJSONArray("stateList"));
+        }
 
     }
 
+    @Override
+    protected void handleErrorResult(String error, String requestType) {
 
+    }
+
+    void populateState(JSONArray array) {
+        try {
+            ArrayList<String> insuranceCompanyList = new ArrayList<>();
+            //Add countries
+
+            for (int i = 0; i < array.length(); i++) {
+                insuranceCompanyList.add(array.getJSONObject(i).getString("stateName"));
+            }
+            //fill data in spinner
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                    (this, android.R.layout.simple_spinner_dropdown_item, insuranceCompanyList);
+            spinnerState.setAdapter(adapter);
+
+        }
+        catch (JSONException e){}
+    }
     public void changeProfilePic(View v) {
         Toast.makeText(this, "Change Photo Pressed", Toast.LENGTH_SHORT).show();
         startCapturingImage(mProfilePic);
     }
 
+    public void updateBAProfile(View view) {
+        finish();
+    }
 }

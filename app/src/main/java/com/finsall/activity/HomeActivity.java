@@ -7,13 +7,12 @@ import android.support.design.bottomnavigation.LabelVisibilityMode;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.finsall.R;
 
@@ -21,7 +20,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 
-public class HomeActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener,NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
 
@@ -36,6 +35,11 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         disableShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(this);
+
+
+        NavigationView drawerNavigation = (NavigationView) findViewById(R.id.drawerNavigation);
+
+        drawerNavigation.setNavigationItemSelectedListener(this);
 
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -70,13 +74,13 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         }
     }
     @Override
-    protected void handleSuccessResult(JSONObject success) {
+    protected void handleSuccessResult(JSONObject success, String requestType) {
 
 
     }
 
     @Override
-    protected void handleErrorResult(String error) {
+    protected void handleErrorResult(String error, String requestType) {
 
     }
 
@@ -85,13 +89,22 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         if (toggle.onOptionsItemSelected(item)) {
             return true;
         }
+        else if( item.getItemId()== R.id.action_settings) {
+            removeData("user");
+            Intent  intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.test, menu);
+        getMenuInflater().inflate(R.menu.menu_finsall, menu);
         return true;
     }
 
@@ -114,7 +127,21 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
                 intent = new Intent(this, PersonalActivity.class);
                 startActivity(intent);
                 return false;
+            case R.id.drawerMyProfile:
+                intent = new Intent(this, BAProfileActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.drawerNotification:
+                intent = new Intent(this, NotificationActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.drawerHome:
+                intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
         }
         return false;
     }
+
 }

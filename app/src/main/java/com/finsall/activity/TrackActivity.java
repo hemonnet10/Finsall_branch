@@ -1,7 +1,7 @@
 package com.finsall.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.finsall.R;
 
@@ -16,12 +16,15 @@ public class TrackActivity extends BaseActivity {
     }
 
     @Override
-    protected void handleSuccessResult(JSONObject success) {
+    protected void handleSuccessResult(JSONObject success, String requestType) {
 
     }
 
     @Override
-    protected void handleErrorResult(String error) {
+    protected void handleErrorResult(String error, String requestType) {
 
+    }
+
+    public void track(View view) {
     }
 }

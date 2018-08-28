@@ -9,4 +9,69 @@
     android:orientation="vertical"
     tools:context=".activity.TrackActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+        <RelativeLayout
+            android:id="@+id/rlAadhaar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+            <EditText
+                android:id="@+id/etTrackNo"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/form_margin"
+                android:layout_marginBottom="@dimen/form_margin"
+                android:layout_marginLeft="@dimen/form_margin"
+                android:ems="10"
+                android:maxLength="20"
+                android:hint="Enter ALA number or the name of applicant"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/etTrackNo"
+                android:layout_marginTop="@dimen/form_margin"
+                android:layout_marginBottom="@dimen/form_margin"
+                android:layout_marginRight="@dimen/form_margin"
+                android:background="@android:color/holo_blue_bright"
+                android:onClick="track"
+                android:text="TRACK" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlTrackResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            >
+
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Detail" />
+
+            <TextView
+                android:id="@+id/etOTP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView44"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:text="det"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
 </LinearLayout>

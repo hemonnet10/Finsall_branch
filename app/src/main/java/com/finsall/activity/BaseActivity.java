@@ -2,9 +2,11 @@ package com.finsall.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -12,9 +14,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,26 +23,19 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Cache;
 import com.android.volley.Network;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.finsall.R;
 import com.finsall.util.FinsallRequestUtil;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -75,10 +68,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-
     protected boolean isNotValidRequired(EditText et) {
-        boolean isValid= !TextUtils.isEmpty(et.getText().toString());
-        if(!isValid) {
+        boolean isValid = !TextUtils.isEmpty(et.getText().toString());
+        if (!isValid) {
             et.setError(getString(R.string.error_field_required));
             et.requestFocus();
         }
@@ -87,8 +79,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     protected boolean isNotValidDOB(EditText et) {
-        boolean isValid= (!TextUtils.isEmpty(et.getText().toString()) && Pattern.compile("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\\\d\\\\d)").matcher(et.getText().toString()).matches());
-        if(!isValid){
+        boolean isValid = (!TextUtils.isEmpty(et.getText().toString()) && Pattern.compile("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\\\d\\\\d)").matcher(et.getText().toString()).matches());
+        if (!isValid) {
             et.setError(getString(R.string.error_invalid_date));
             et.requestFocus();
         }
@@ -97,8 +89,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected boolean isNotValidEmail(EditText et) {
-        boolean isValid= (!TextUtils.isEmpty(et.getText().toString()) && Patterns.EMAIL_ADDRESS.matcher(et.getText().toString()).matches());
-        if(!isValid){
+        boolean isValid = (!TextUtils.isEmpty(et.getText().toString()) && Patterns.EMAIL_ADDRESS.matcher(et.getText().toString()).matches());
+        if (!isValid) {
             et.setError(getString(R.string.error_invalid_email));
             et.requestFocus();
         }
@@ -106,7 +98,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    protected void sendRequestToServer(JSONObject jsonObject) {
+    protected void sendRequestToServer(JSONObject jsonObject, String requestType, boolean isCachable) {
+        if(isCachable) {
+            JSONObject cachedResponse=  getDataFromCache(jsonObject);
+          //  handleSuccessResult(cachedResponse);
+            //return;
+        }
         show();
         Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024);
         Network network = new BasicNetwork(new HurlStack());
@@ -117,7 +114,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         hide();
                         try {
-                            handleSuccessResult(response);
+                            handleSuccessResult(response, requestType);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -126,7 +123,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 hide();
-                handleErrorResult("Network Error.");
+                handleErrorResult("Network Error.", requestType);
             }
 
         }) {
@@ -143,6 +140,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    private JSONObject getDataFromCache(JSONObject jsonObject) {
+        try {
+            String key=jsonObject.getString("serviceName")+"|"+jsonObject.getString("serviceMethod");
+            String value=getData(key);
+          //  JSON json= new JSONObject();
+            //json.p
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
+
     protected JSONObject getBaseJSONRequestObj(String serviceName, String serviceMethod) {
         JSONObject jsonObject = new JSONObject();
         try {
@@ -150,8 +159,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             jsonObject.put("serviceMethod", serviceMethod);
             jsonObject.put("clientId", "2017");
             jsonObject.put("version", "1.0.0");
-            if(getData("userId")!=null)
-            jsonObject.put("loggedInUserId", getData("userId"));
+            if (getData("userId") != null)
+                jsonObject.put("loggedInUserId", getData("userId"));
 
         } catch (JSONException e) {
 
@@ -159,9 +168,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         return jsonObject;
     }
 
-    protected abstract void handleSuccessResult(JSONObject success) throws JSONException;
+    protected abstract void handleSuccessResult(JSONObject success, String requestType) throws JSONException;
 
-    protected abstract void handleErrorResult(String error);
+    protected abstract void handleErrorResult(String error, String requestType);
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -207,10 +216,72 @@ public abstract class BaseActivity extends AppCompatActivity {
         editor.putString(key, value);
         editor.commit();
     }
+    protected void removeData(String key) {
+        SharedPreferences sf = getSharedPreferences("MyPref",
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sf.edit();
+        editor.remove(key);
+        editor.commit();
+    }
 
     protected String getData(String key) {
         SharedPreferences sf = getSharedPreferences("MyPref",
                 Context.MODE_PRIVATE);
         return sf.getString(key, null);
+    }
+
+
+    protected void addJsonTag(JSONObject jsonObject, String key, Object value) {
+        try {
+            jsonObject.put(key, value);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected Object getJsonTag(JSONObject jsonObject, String key) {
+        try {
+            return jsonObject.get(key);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    protected String getJsonTagString(JSONObject jsonObject, String key) {
+        try {
+            return jsonObject.getString(key);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    protected Double getJsonTagDouble(JSONObject jsonObject, String key) {
+        try {
+            return jsonObject.getDouble(key);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    protected void showAlert(String message, boolean isFinishRequest, Intent nextActivityIntent){
+        //show dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Alert");
+        builder.setMessage(message);
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if(nextActivityIntent!=null){
+                    startActivity(nextActivityIntent);
+                }
+                if(isFinishRequest){
+                    finish();
+                }
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
@@ -55,12 +53,12 @@ public class CustomerDetailActivity extends BaseActivity {
     }
 
     @Override
-    protected void handleSuccessResult(JSONObject success) {
+    protected void handleSuccessResult(JSONObject success, String requestType) {
 
     }
 
     @Override
-    protected void handleErrorResult(String error) {
+    protected void handleErrorResult(String error, String requestType) {
 
     }
 
@@ -79,6 +77,11 @@ public class CustomerDetailActivity extends BaseActivity {
     }
 
     public void showOTPPage(View view) {
+
+        if(rg.getCheckedRadioButtonId()==-1){
+            ((RadioButton)findViewById(R.id.radioCorporate)).setError(getString(R.string.error_field_required));
+            return;
+        }
         Intent intent= new Intent(this,OTPActivity.class);
         intent.putExtra("REQUEST_TYPE","CUSTOMER_DETAIL");
 

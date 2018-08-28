@@ -1,6 +1,5 @@
 package com.finsall.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -18,7 +17,7 @@ public class BAAccountActivity extends BaseActivity {
     }
 
     @Override
-    protected void handleSuccessResult(JSONObject success) {
+    protected void handleSuccessResult(JSONObject success, String requestType) {
         //week
         TextView tvLoanDisbursedCountWeek = (TextView) findViewById(R.id.tvLoanDisbursedCountWeek);
         TextView tvLoanDisbursedValueWeek = (TextView) findViewById(R.id.tvLoanDisbursedValueWeek);
@@ -33,7 +32,7 @@ public class BAAccountActivity extends BaseActivity {
 
 
     @Override
-    protected void handleErrorResult(String error) {
+    protected void handleErrorResult(String error, String requestType) {
 
     }
 }

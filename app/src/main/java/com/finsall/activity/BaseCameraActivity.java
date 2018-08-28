@@ -34,6 +34,7 @@ public abstract class BaseCameraActivity extends BaseActivity {
     public static final int MEDIA_TYPE_IMAGE = 2;
     private Uri mMediaUri;
     public ImageView imagePreview;
+   private Integer noOfImagesToTake=0;
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -53,14 +54,17 @@ public abstract class BaseCameraActivity extends BaseActivity {
         if(imagePreview==null)
             return;
         this.imagePreview = imagePreview;
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
                     123);
-
 
         } else {
 
@@ -74,6 +78,7 @@ public abstract class BaseCameraActivity extends BaseActivity {
                     Intent choosePictureIntent = new Intent(Intent.ACTION_GET_CONTENT);
                     choosePictureIntent.setType("image/*");
                     startActivityForResult(choosePictureIntent, CHOOSE_PIC_REQUEST_CODE);
+                    noOfImagesToTake+=1;
                 }
             });
             builder.setNegativeButton("Take Photo", new DialogInterface.OnClickListener() {
@@ -92,6 +97,7 @@ public abstract class BaseCameraActivity extends BaseActivity {
 
                         //mSaveChangesBtn.setEnabled(true);
                     }
+                    noOfImagesToTake+=1;
                 }
             });
             AlertDialog dialog = builder.create();
@@ -188,5 +194,7 @@ public abstract class BaseCameraActivity extends BaseActivity {
         }
     }
 
-
+    public Integer getNoOfImagesToTake() {
+        return noOfImagesToTake;
+    }
 }

@@ -33,12 +33,12 @@ public class FingerPrintScanningActivity extends BaseActivity {
     }
 
     @Override
-    protected void handleSuccessResult(JSONObject success) {
+    protected void handleSuccessResult(JSONObject success, String requestType) {
 
     }
 
     @Override
-    protected void handleErrorResult(String error) {
+    protected void handleErrorResult(String error, String requestType) {
 
     }
 

@@ -1,7 +1,6 @@
 package com.finsall.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +19,7 @@ public class CaptureALADocumentsActivity extends BaseCameraActivity {
     private RelativeLayout rlala2;
     private ImageView imageViewPreview;
     Button buttonRetake;
-    int noOfImagesTotake=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,26 +41,31 @@ public class CaptureALADocumentsActivity extends BaseCameraActivity {
         rlala1.setVisibility(View.GONE);
         rlala2.setVisibility(View.VISIBLE);
         startCapturingImage(imageViewPreview);
-        buttonRetake.setVisibility(View.VISIBLE);
         ((TextView)findViewById(R.id.myImageViewText)).setVisibility(View.GONE);
-        noOfImagesTotake++;
-        if(noOfImagesTotake==3){
+
+        if(getNoOfImagesToTake()==1){
+            buttonRetake.setVisibility(View.VISIBLE);
+        }
+        if(getNoOfImagesToTake()==3){
+
             ((Button)findViewById(R.id.buttonSubmit)).setVisibility(View.VISIBLE);
+            ((ImageView)findViewById(R.id.buttonCamera)).setVisibility(View.GONE);
+            ((Button)findViewById(R.id.buttonRetake)).setVisibility(View.GONE);
         }
     }
 
     public void submitDocuments(View v){
-
         Intent intent=new Intent(this,HomeActivity.class);
-        startActivity(intent);
+        showAlert("Documents submitted successfully.", true, intent);
+
     }
     @Override
-    protected void handleSuccessResult(JSONObject success) throws JSONException {
+    protected void handleSuccessResult(JSONObject success, String requestType) throws JSONException {
 
     }
 
     @Override
-    protected void handleErrorResult(String error) {
+    protected void handleErrorResult(String error, String requestType) {
 
     }
 }

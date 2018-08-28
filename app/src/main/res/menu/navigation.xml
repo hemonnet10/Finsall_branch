@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
+    <item android:id="@+id/drawerHome"
         android:title="@string/title_home" />
 
-    <item
-        android:title="@string/title_dashboard" />
+    <item android:id="@+id/drawerMyProfile"
+        android:title="My Profile" />
 
-    <item
+    <item android:id="@+id/drawerNotification"
         android:title="@string/title_notifications" />
 
 

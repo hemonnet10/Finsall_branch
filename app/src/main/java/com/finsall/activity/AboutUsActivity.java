@@ -1,7 +1,7 @@
 package com.finsall.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.finsall.R;
 
@@ -13,15 +13,17 @@ public class AboutUsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
+
+        ((TextView)findViewById(R.id.aboutUStext)).setText(getString(R.string.about_us));
     }
 
     @Override
-    protected void handleSuccessResult(JSONObject success) {
+    protected void handleSuccessResult(JSONObject success, String requestType) {
 
     }
 
     @Override
-    protected void handleErrorResult(String error) {
+    protected void handleErrorResult(String error, String requestType) {
 
     }
 }

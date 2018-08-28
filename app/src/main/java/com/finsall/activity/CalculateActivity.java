@@ -16,7 +16,7 @@ public class CalculateActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate);
 
-        if(getSupportActionBar()!=null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
@@ -24,27 +24,35 @@ public class CalculateActivity extends BaseActivity {
     }
 
     @Override
-    protected void handleSuccessResult(JSONObject success) {
+    protected void handleSuccessResult(JSONObject success, String requestType) {
 
     }
 
     @Override
-    protected void handleErrorResult(String error) {
+    protected void handleErrorResult(String error, String requestType) {
 
     }
 
+    public void openActivity(View view) {
 
-    public void verifyOTP(View view) {
-        Intent intent=new Intent(this,HomeActivity.class);
+        String TAG = view.getTag().toString();
+        Intent intent = new Intent(this, MotorLoanActivity.class);
+
+        if("NonMotorLoanActivity".equals(TAG)){
+            intent.putExtra("pageName","Non Motor Calculation");
+        }
         startActivity(intent);
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    }
+
+}

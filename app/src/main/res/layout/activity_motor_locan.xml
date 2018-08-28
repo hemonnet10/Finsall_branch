@@ -5,397 +5,432 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MotorLoanActivity">
+
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
-
-        <TextView
-            android:id="@+id/textView2"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Insurance Company" />
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
 
-        <Spinner
-            android:id="@+id/spinnerInsuranceCompany"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
-            android:layout_margin="@dimen/form_margin" />
+            <TextView
+                android:id="@+id/textViewType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Insurance Company" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/spinnerInsuranceCompany"
-            android:layout_margin="@dimen/form_margin"
-            android:text="TP(Act) Premium" />
+            <RelativeLayout
+                android:id="@+id/rlType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewType">
 
-        <EditText
-            android:id="@+id/editTextTPPremium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView3"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9 TP(Act) Premium"
-            android:inputType="numberDecimal" />
+                <Spinner
+                    android:id="@+id/spinnerInsuranceCompany"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/form_margin" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextTPPremium"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Other Premium" />
+                <Spinner
+                    android:id="@+id/spinnerPolicyType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/form_margin" />
 
-        <EditText
-            android:id="@+id/editTextOtherPremium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView4"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9 Other Premium"
-            android:inputType="numberDecimal" />
+            </RelativeLayout>
 
-        <Button
-            android:id="@+id/buttonCalculate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextOtherPremium"
-            android:layout_margin="@dimen/form_margin"
-            android:onClick="calculateLoan"
-            android:background="@android:color/holo_blue_bright"
-            android:text="CALCULATE LOAN" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlType"
+                android:layout_margin="@dimen/form_margin"
+                android:text="TP(Act) Premium" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/buttonCalculate"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Premium Details"
-            android:textStyle="bold" />
+            <EditText
+                android:id="@+id/editTextTPPremium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint="\u20B9 TP(Act) Premium"
+                android:inputType="numberDecimal" />
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView5"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Total Premium" />
+            <RelativeLayout
+                android:id="@+id/rlOtherPremium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextTPPremium">
 
-        <EditText
-            android:id="@+id/editTextTotalPremium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView6"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9"
-            android:inputType="numberDecimal" />
+                <TextView
+                    android:id="@+id/textViewOtherText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/form_margin"
+                    android:text="Other Premium" />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextTotalPremium"
-            android:layout_margin="@dimen/form_margin"
-            android:text="GST @ 18%" />
+                <EditText
+                    android:id="@+id/editTextOtherPremium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewOtherText"
+                    android:layout_margin="@dimen/form_margin"
+                    android:ems="10"
+                    android:hint="\u20B9 Other Premium"
+                    android:inputType="numberDecimal" />
+            </RelativeLayout>
 
-        <EditText
-            android:id="@+id/eTGST"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView7"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9 "
-            android:inputType="numberDecimal" />
+            <Button
+                android:id="@+id/buttonCalculate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlOtherPremium"
+                android:layout_margin="@dimen/form_margin"
+                android:background="@android:color/holo_blue_bright"
+                android:onClick="calculateLoan"
+                android:text="CALCULATE LOAN" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eTGST"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Total Amount" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonCalculate"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Premium Details"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/eTTotalAmount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView8"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9"
-            android:inputType="numberDecimal" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView5"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Total Premium" />
 
-        <TextView
-            android:id="@+id/textView08"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eTTotalAmount"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Other Amount" />
+            <EditText
+                android:id="@+id/editTextTotalPremium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView6"
+                android:layout_margin="@dimen/form_margin"
+                android:enabled="false"
+                android:ems="10"
+                android:hint="\u20B9"
+                android:inputType="numberDecimal" />
 
-        <EditText
-            android:id="@+id/editTextTotalOtherAmount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView08"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9"
-            android:inputType="numberDecimal" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextTotalPremium"
+                android:layout_margin="@dimen/form_margin"
+                android:text="GST @ 18%" />
 
+            <EditText
+                android:id="@+id/eTGST"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:layout_below="@+id/textView7"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint="\u20B9 "
+                android:inputType="numberDecimal" />
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextTotalOtherAmount"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Eligible Loan Amount"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eTGST"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Total Amount" />
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView9"
-            android:layout_margin="@dimen/form_margin"
-            android:text="TP(Act) Premium" />
+            <EditText
+                android:id="@+id/eTTotalAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:layout_below="@+id/textView8"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint="\u20B9"
+                android:inputType="numberDecimal" />
 
-        <EditText
-            android:id="@+id/etEligibleTPPremium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView10"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9"
-            android:inputType="numberDecimal" />
+            <TextView
+                android:id="@+id/textView08"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eTTotalAmount"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Other Amount" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/etEligibleTPPremium"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Other Premium" />
-
-        <EditText
-            android:id="@+id/eTEligibleOtherPremium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView11"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9 "
-            android:inputType="numberDecimal" />
+            <EditText
+                android:id="@+id/editTextTotalOtherAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView08"
+                android:layout_margin="@dimen/form_margin"
+                android:enabled="false"
+                android:ems="10"
+                android:hint="\u20B9"
+                android:inputType="numberDecimal" />
 
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eTEligibleOtherPremium"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Total Premium" />
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextTotalOtherAmount"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Eligible Loan Amount"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/eTEligibleTotalPremium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView12"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9 "
-            android:inputType="numberDecimal" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView9"
+                android:layout_margin="@dimen/form_margin"
+                android:text="TP(Act) Premium" />
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eTEligibleTotalPremium"
-            android:layout_margin="@dimen/form_margin"
-            android:text="GST @ 18%" />
+            <EditText
+                android:id="@+id/etEligibleTPPremium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:layout_below="@+id/textView10"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint="\u20B9"
+                android:inputType="numberDecimal" />
 
-        <EditText
-            android:id="@+id/eTEligibleGST"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView13"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9 "
-            android:inputType="numberDecimal" />
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etEligibleTPPremium"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Other Premium" />
 
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eTEligibleGST"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Total Loan Amount" />
-
-        <EditText
-            android:id="@+id/eTEligibleTotalLoanAmount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView14"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9"
-            android:inputType="numberDecimal" />
+            <EditText
+                android:id="@+id/eTEligibleOtherPremium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:layout_below="@+id/textView11"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint="\u20B9 "
+                android:inputType="numberDecimal" />
 
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eTEligibleTotalLoanAmount"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Monthly Installment"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eTEligibleOtherPremium"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Total Premium" />
 
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView15"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Principal" />
+            <EditText
+                android:id="@+id/eTEligibleTotalPremium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView12"
+                android:enabled="false"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint="\u20B9 "
+                android:inputType="numberDecimal" />
 
-        <EditText
-            android:id="@+id/eTPrincipal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView16"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9"
-            android:inputType="numberDecimal" />
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eTEligibleTotalPremium"
+                android:layout_margin="@dimen/form_margin"
+                android:text="GST @ 18%" />
 
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eTPrincipal"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Interest" />
+            <EditText
+                android:id="@+id/eTEligibleGST"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView13"
+                android:enabled="false"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint="\u20B9 "
+                android:inputType="numberDecimal" />
 
-        <EditText
-            android:id="@+id/eTInterest"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView17"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9 "
-            android:inputType="numberDecimal" />
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eTEligibleGST"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Total Loan Amount" />
 
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eTInterest"
-            android:layout_margin="@dimen/form_margin"
-            android:text="EMI" />
-
-
-        <EditText
-            android:id="@+id/eTEMI"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView18"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9"
-            android:inputType="numberDecimal" />
-
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eTEMI"
-            android:textStyle="bold"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Upfront Loan Contribution" />
-
-        <TextView
-            android:id="@+id/textView199"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView19"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Premium Contribution" />
-
-        <EditText
-            android:id="@+id/eTUpfrontLoanContribution"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView199"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9"
-            android:inputType="numberDecimal" />
+            <EditText
+                android:id="@+id/eTEligibleTotalLoanAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView14"
+                android:layout_margin="@dimen/form_margin"
+                android:enabled="false"
+                android:ems="10"
+                android:hint="\u20B9"
+                android:inputType="numberDecimal" />
 
 
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eTUpfrontLoanContribution"
-            android:layout_margin="@dimen/form_margin"
-            android:text="1st EMI" />
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eTEligibleTotalLoanAmount"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Monthly Installment"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/et1stEMI"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView20"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9"
-            android:inputType="numberDecimal" />
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView15"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Principal" />
 
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/et1stEMI"
-            android:layout_margin="@dimen/form_margin"
-            android:text="Total Contribution" />
+            <EditText
+                android:id="@+id/eTPrincipal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView16"
+                android:enabled="false"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint="\u20B9"
+                android:inputType="numberDecimal" />
 
-        <EditText
-            android:id="@+id/eTTotalContribution"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView21"
-            android:layout_margin="@dimen/form_margin"
-            android:ems="10"
-            android:hint="\u20B9 "
-            android:inputType="numberDecimal" />
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eTPrincipal"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Interest" />
 
-        <Button
-            android:id="@+id/buttonProcessLoan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/eTTotalContribution"
-            android:layout_margin="@dimen/form_margin"
-            android:onClick="processLoan"
-            android:background="@android:color/holo_blue_bright"
-            android:text="PROCESS LOAN" />
+            <EditText
+                android:id="@+id/eTInterest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView17"
+                android:enabled="false"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint="\u20B9 "
+                android:inputType="numberDecimal" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eTInterest"
+                android:layout_margin="@dimen/form_margin"
+                android:text="EMI" />
+
+
+            <EditText
+                android:id="@+id/eTEMI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView18"
+                android:enabled="false"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint="\u20B9"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eTEMI"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Upfront Loan Contribution"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView199"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView19"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Premium Contribution" />
+
+            <EditText
+                android:id="@+id/eTUpfrontLoanContribution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView199"
+                android:layout_margin="@dimen/form_margin"
+                android:enabled="false"
+                android:ems="10"
+                android:hint="\u20B9"
+                android:inputType="numberDecimal" />
+
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eTUpfrontLoanContribution"
+                android:layout_margin="@dimen/form_margin"
+                android:text="1st EMI" />
+
+            <EditText
+                android:id="@+id/et1stEMI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:layout_below="@+id/textView20"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:hint="\u20B9"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et1stEMI"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Total Contribution" />
+
+            <EditText
+                android:id="@+id/eTTotalContribution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView21"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="\u20B9 "
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/buttonProcessLoan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eTTotalContribution"
+                android:layout_margin="@dimen/form_margin"
+                android:background="@android:color/holo_blue_bright"
+                android:onClick="processLoan"
+                android:text="PROCESS LOAN" />
+
+        </RelativeLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

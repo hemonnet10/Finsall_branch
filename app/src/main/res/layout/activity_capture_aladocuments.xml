@@ -69,25 +69,26 @@
             android:background="@android:color/darker_gray">
 
             <ImageView
+                android:id="@+id/buttonCamera"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-
                 android:layout_centerHorizontal="true"
-                android:onClick="captureImage"
+                android:onClick="scanDocuments"
                 android:src="@drawable/user_pic_camera"
-                android:text="" />
+                 />
+        <Button
+            android:id="@+id/buttonSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/form_margin"
+            android:background="@android:color/holo_blue_bright"
+            android:onClick="submitDocuments"
+            android:text="SUBMIT" />
         </RelativeLayout>
+
     </RelativeLayout>
-    <Button
-        android:id="@+id/buttonSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_alignParentButton="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/form_margin"
-        android:background="@android:color/holo_blue_bright"
-        android:onClick="submitDocuments"
-        android:text="SUBMIT" />
+
 
 </android.support.constraint.ConstraintLayout>

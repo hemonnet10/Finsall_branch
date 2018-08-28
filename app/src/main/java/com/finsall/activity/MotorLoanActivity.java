@@ -1,16 +1,17 @@
 package com.finsall.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.finsall.R;
 import com.finsall.dto.InsuranceCompany;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,8 +20,9 @@ import java.util.ArrayList;
 public class MotorLoanActivity extends BaseActivity {
 
 
+    public static final String MOTOR_LOAN_CALCULATION = "Motor Loan Calculation";
     private Spinner insuranceCompanySpinner;
-    private String requestType = "GET_INSURANCE_COMPANY";
+    private Spinner policyTypeSpinner;
     EditText editTextTPPremium;
     EditText editTextOtherPremium;
 
@@ -40,28 +42,15 @@ public class MotorLoanActivity extends BaseActivity {
     private EditText eTUpfrontLoanContribution ;
     private EditText et1stEMI;
     private EditText eTTotalContribution;
+    String pageName="Motor Loan Calculation";
 
-
+    TextView textViewType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_motor_locan);
         insuranceCompanySpinner = (Spinner) findViewById(R.id.spinnerInsuranceCompany);
-        ArrayList<InsuranceCompany> insuranceCompanyList = new ArrayList<>();
-        //Add countries
-
-        insuranceCompanyList.add(new InsuranceCompany(1, "India"));
-        insuranceCompanyList.add(new InsuranceCompany(2, "USA"));
-        insuranceCompanyList.add(new InsuranceCompany(3, "China"));
-        insuranceCompanyList.add(new InsuranceCompany(4, "UK"));
-
-        //fill data in spinner
-        ArrayAdapter<InsuranceCompany> adapter = new ArrayAdapter<InsuranceCompany>
-                (this, android.R.layout.simple_spinner_dropdown_item, insuranceCompanyList);
-        insuranceCompanySpinner.setAdapter(adapter);
-        insuranceCompanySpinner.setAdapter(adapter);
-
-
+        policyTypeSpinner = (Spinner) findViewById(R.id.spinnerPolicyType);
         //input fields for loanemi calculation
         editTextTPPremium = (EditText) findViewById(R.id.editTextTPPremium);
         editTextOtherPremium = (EditText) findViewById(R.id.editTextOtherPremium);
@@ -83,23 +72,53 @@ public class MotorLoanActivity extends BaseActivity {
         eTUpfrontLoanContribution = (EditText) findViewById(R.id.eTUpfrontLoanContribution);
         et1stEMI = (EditText) findViewById(R.id.et1stEMI);
         eTTotalContribution = (EditText) findViewById(R.id.eTTotalContribution);
+        textViewType=(TextView)findViewById(R.id.textViewType);
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null) {
+            String pn = extras.getString("pageName");
+            if (pn != null && !pn.isEmpty())
+                pageName = pn;
+        }
+        if(pageName.equals(MOTOR_LOAN_CALCULATION)) {
+            JSONObject jsonObject = getBaseJSONRequestObj("FinsAllService", "getInsuranceCompany");
+            sendRequestToServer(jsonObject, "GET_INSURANCE_COMPANY", false);
+        }
+        else{
+            setTitle(pageName);
+            textViewType.setText("Policy Type");
+            insuranceCompanySpinner.setVisibility(View.GONE);
+            JSONObject jsonObject = getBaseJSONRequestObj("FinsAllService", "getInsuranceTypeById");
+            addJsonTag(jsonObject, "insuranceTypeId", "2");
+            sendRequestToServer(jsonObject, "GET_INSURANCE_TYPE", false);
+            editTextOtherPremium.setVisibility(View.GONE);
+            ((TextView)findViewById(R.id.textViewOtherText)).setVisibility(View.GONE);
+        }
 
     }
 
+
     @Override
-    protected void handleSuccessResult(JSONObject success) throws JSONException {
+    protected void handleSuccessResult(JSONObject success, String requestType) throws JSONException {
 
         if ("GET_INSURANCE_COMPANY".equals(requestType)) {
+            JSONArray array=success.getJSONArray("externalEntityNameDTOList");
+            populateInsuranceCompany(array);
 
-        } else if ("CALCULATE".equals(requestType)) {
+        }
+        else if ("GET_INSURANCE_TYPE".equals(requestType)) {
+            JSONArray array=success.getJSONArray("externalEntityTypeDTOList");
+            populatePolicyType(array);
+
+        }
+        else if ("CALCULATE".equals(requestType)) {
             //edit=success.getString("premium_total_prenium");
 
-            editTextTotalPremium.setText(success.getString("premium_total_prenium"));
-            eTGST.setText(success.getString("premium_gst"));
+                editTextTotalPremium.setText(success.getString("premium_total_premium"));
+            eTGST.setText(getJsonTagString(success,"premium_gst"));
             eTTotalAmount.setText(success.getString("premium_total_amount"));
-            editTextOtherAmount.setText(success.getString("premium_other_premium"));
-            etEligibleTPPremium.setText(success.getString("eligible_tp_prenium"));
-            eTEligibleOtherPremium.setText(success.getString("eligible_other_premium"));
+            editTextOtherAmount.setText(getJsonTagString(success,"premium_other_premium"));
+            etEligibleTPPremium.setText(success.getString("eligible_tp_premium"));
+            eTEligibleOtherPremium.setText(getJsonTagString(success,"eligible_other_premium"));
             eTEligibleTotalPremium.setText(success.getString("eligible_total_premium"));
             eTEligibleGST .setText(success.getString("eligible_gst"));
             eTEligibleTotalLoanAmount .setText(success.getString("eligible_total_loan_amount"));
@@ -117,7 +136,7 @@ public class MotorLoanActivity extends BaseActivity {
     }
 
     @Override
-    protected void handleErrorResult(String error) {
+    protected void handleErrorResult(String error, String requestType) {
 
     }
 
@@ -129,14 +148,61 @@ public class MotorLoanActivity extends BaseActivity {
 
         if (isNotValidRequired(editTextTPPremium))
             return;
-        if (isNotValidRequired(editTextOtherPremium))
+        if (pageName.equals(MOTOR_LOAN_CALCULATION)&& isNotValidRequired(editTextOtherPremium))
             return;
 
+        //this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         JSONObject jsonObject = getBaseJSONRequestObj("EMICalculationService", "loanCalculation");
-        jsonObject.put("tp_premium", editTextTPPremium.getText().toString());
-        jsonObject.put("other_premium", editTextOtherPremium.getText().toString());
-        sendRequestToServer(jsonObject);
-        requestType = "CALCULATE";
+        addJsonTag(jsonObject, "tp_premium", editTextTPPremium.getText().toString());
+        if(pageName.equals(MOTOR_LOAN_CALCULATION)) {
+            addJsonTag(jsonObject, "other_premium", editTextOtherPremium.getText().toString());
+            jsonObject.put("insurance_company_id", insuranceCompanySpinner.getSelectedItemId());
+            jsonObject.put("insurance_type_id", 1);
 
+        }
+        else{
+            jsonObject.put("insurance_type_id", 2);
+            jsonObject.put("policy_type_id", policyTypeSpinner.getSelectedItemId());
+        }
+
+        sendRequestToServer(jsonObject, "CALCULATE", false);
     }
+
+    void populateInsuranceCompany(JSONArray array) {
+        try {
+            ArrayList<InsuranceCompany> insuranceCompanyList = new ArrayList<>();
+            //Add countries
+
+            for (int i = 0; i < array.length(); i++) {
+                insuranceCompanyList.add(new InsuranceCompany(array.getJSONObject(i).getInt("externalEntityNameId"),
+                        array.getJSONObject(i).getString("entityName")));
+            }
+            //fill data in spinner
+            ArrayAdapter<InsuranceCompany> adapter = new ArrayAdapter<InsuranceCompany>
+                    (this, android.R.layout.simple_spinner_dropdown_item, insuranceCompanyList);
+            insuranceCompanySpinner.setAdapter(adapter);
+
+        }
+        catch (JSONException e){}
+    }
+
+    void populatePolicyType(JSONArray array) {
+        try {
+            ArrayList<InsuranceCompany> list = new ArrayList<>();
+            //Add countries
+
+            for (int i = 0; i < array.length(); i++) {
+                list.add(new InsuranceCompany(array.getJSONObject(i).getInt("externalEntityTypeId"),
+                        array.getJSONObject(i).getString("entityType")));
+            }
+            //fill data in spinner
+            ArrayAdapter<InsuranceCompany> adapter = new ArrayAdapter<InsuranceCompany>
+                    (this, android.R.layout.simple_spinner_dropdown_item, list);
+            policyTypeSpinner.setAdapter(adapter);
+
+
+        }
+        catch (JSONException e){}
+    }
+
 }

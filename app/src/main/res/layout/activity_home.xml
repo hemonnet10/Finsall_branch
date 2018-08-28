@@ -203,19 +203,53 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
+
                         <RelativeLayout
-                            android:id="@+id/relativeLayoutGal4"
+                            android:id="@+id/relativeLayoutGal04"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp">
 
-                            <ImageView
+                            <TextView
+                                android:id="@+id/imageServices01"
+                                android:layout_width="@dimen/image_offer_dimension_width"
+                                android:layout_height="@dimen/image_offer_dimension_height"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY"
+                                android:textColor="@android:color/white"
+                                android:gravity="center"
+                                android:text="The loan is currently available for non-life insurance policies, new as well as renewals, purchased from the partner insurance companies."
+                                android:background="#1d2941" />
+
+                            <TextView
+                                android:id="@+id/textServices01"
+                                android:layout_width="@dimen/image_offer_dimension_width"
+
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/imageServices01"
+                                android:background="#0b2036"
+                                android:gravity="center"
+                                android:text="The Loan"
+                                android:textColor="@android:color/white" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relativeLayoutGal4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2dp"
+                            android:layout_toRightOf="@+id/relativeLayoutGal04">
+
+                            <TextView
                                 android:id="@+id/imageServices1"
                                 android:layout_width="@dimen/image_offer_dimension_width"
                                 android:layout_height="@dimen/image_offer_dimension_height"
                                 android:adjustViewBounds="true"
                                 android:scaleType="fitXY"
-                                app:srcCompat="@drawable/service1" />
+                                android:textColor="@android:color/white"
+                                android:gravity="center"
+                                android:text="All Indian nationals and Indian organizations are eligible to avail of the loan."
+                                android:background="#4ba4c2" />
 
                             <TextView
                                 android:id="@+id/textServices1"
@@ -223,9 +257,9 @@
 
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/imageServices1"
-                                android:background="@android:color/holo_blue_dark"
+                                android:background="#4ac1e4"
                                 android:gravity="center"
-                                android:text="Service1"
+                                android:text="Who is eligible"
                                 android:textColor="@android:color/white" />
                         </RelativeLayout>
 
@@ -236,13 +270,16 @@
                             android:layout_margin="2dp"
                             android:layout_toRightOf="@+id/relativeLayoutGal4">
 
-                            <ImageView
+                            <TextView
                                 android:id="@+id/imageService2"
                                 android:layout_width="@dimen/image_offer_dimension_width"
                                 android:layout_height="@dimen/image_offer_dimension_height"
+                                android:gravity="center"
+                                android:text="The following types of policies are eligible for loan. However, on a case to case basis, other types of policies too can be considered. 1. Medical Insurance Policies 2. Motor Vehicle Insurance Policies 3. Packaged Policies ( Home, Office, Shops etc.) 4. Policies of interest to small and micro enterprises."
                                 android:adjustViewBounds="true"
-                                android:scaleType="fitXY"
-                                app:srcCompat="@drawable/service2" />
+                                android:scrollbars = "vertical"
+                                android:textColor="@android:color/white"
+                                android:background="#1d2941" />
 
                             <TextView
                                 android:id="@+id/textService2"
@@ -250,9 +287,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/imageService2"
                                 android:layout_centerHorizontal="true"
-                                android:background="@android:color/holo_blue_dark"
+                                android:background="#0b2036"
                                 android:gravity="center"
-                                android:text="Service2"
+                                android:text="Eligible Insurance Policies"
                                 android:textColor="@android:color/white"
 
                                 />
@@ -265,13 +302,16 @@
                             android:layout_margin="2dp"
                             android:layout_toRightOf="@+id/relativeLayoutGal5">
 
-                            <ImageView
+                            <TextView
                                 android:id="@+id/imageService3"
                                 android:layout_width="@dimen/image_offer_dimension_width"
                                 android:layout_height="@dimen/image_offer_dimension_height"
+                                android:gravity="center"
+                                android:text="Loan shall not be available in the following scenarios. 1. If the policy period is less than 12 months 2. If any other financial institution has interest in the subject matter of insurance at the time of taking loan. 3. Third Party Liability component of a Motor Insurance policy shall not be financed."
                                 android:adjustViewBounds="true"
-                                android:scaleType="fitXY"
-                                app:srcCompat="@drawable/service3" />
+                                android:scrollbars = "vertical"
+                                android:textColor="@android:color/white"
+                                android:background="#4ba4c2" />
 
                             <TextView
                                 android:id="@+id/textService3"
@@ -280,9 +320,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/imageService3"
                                 android:layout_centerHorizontal="true"
-                                android:background="@android:color/holo_blue_dark"
+                                android:background="#4ac1e4"
                                 android:gravity="center"
-                                android:text="Service3"
+                                android:text="Excluded scenarios"
                                 android:textColor="@android:color/white"
 
                                 />
@@ -312,6 +352,7 @@
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView
+        android:id="@+id/drawerNavigation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"

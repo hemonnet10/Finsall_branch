@@ -1,44 +1,18 @@
 package com.finsall.activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.app.LoaderManager.LoaderCallbacks;
 
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
-
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.finsall.R;
-import com.finsall.dto.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
@@ -68,11 +42,15 @@ public class LoginActivity extends BaseActivity  {
     }
 
     @Override
-    protected void handleSuccessResult(JSONObject success) {
+    protected void handleSuccessResult(JSONObject success, String requestType) {
         Intent intent=null;
         String mobile=null;
         try {
-
+            String errorMsg= (String) getJsonTag(success,"errorMessage");
+            if(errorMsg!=null && !errorMsg.isEmpty()){
+               showAlert(errorMsg, false, null);
+                return;
+            }
             mobile=success.getString("mobileNo");
             String userId=success.getString("userId");
             saveData("user",success.toString());
@@ -90,14 +68,14 @@ public class LoginActivity extends BaseActivity  {
 
         }
         startActivity(intent);
-        Toast.makeText(this,mobile,Toast.LENGTH_LONG).show();
+       // Toast.makeText(this,mobile,Toast.LENGTH_LONG).show();
 
     }
 
     @Override
-    protected void handleErrorResult(String error) {
+    protected void handleErrorResult(String error, String requestType) {
         etPassword.setFocusable(true);
-        etPassword.setError(error);
+        showAlert(error,false,null);
         //Toast.makeText(this,error,Toast.LENGTH_LONG).show();
     }
 
@@ -118,10 +96,10 @@ public class LoginActivity extends BaseActivity  {
         else
         jsonObject.put("app", true);
 
-        //sendRequestToServer(jsonObject);
+        sendRequestToServer(jsonObject,"validateOTP",false);
         //remove below two lines
-       Intent intent = new Intent(this, OTPActivity.class);
-       startActivity(intent);
+      // Intent intent = new Intent(this, OTPActivity.class);
+       //startActivity(intent);
 
     }
 
