@@ -24,7 +24,9 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public abstract class BaseCameraActivity extends BaseActivity {
@@ -35,7 +37,7 @@ public abstract class BaseCameraActivity extends BaseActivity {
     private Uri mMediaUri;
     public ImageView imagePreview;
    private Integer noOfImagesToTake=0;
-
+    List<Byte[]> imageByteList= new ArrayList<>();
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {

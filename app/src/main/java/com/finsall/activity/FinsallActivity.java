@@ -24,14 +24,14 @@ public class FinsallActivity extends BaseActivity {
             public void run() {
                 Intent intent=null;
 
-                if(getData("user")!=null)
+                if(getData("user")!=null && getData("isVerified")!=null)
                 {
-                   // intent = new Intent(FinsallActivity.this, CaptureALADocumentsActivity.class);
+                   //intent = new Intent(FinsallActivity.this, KYCCustomerDetailActivity.class);
                     intent = new Intent(FinsallActivity.this, HomeActivity.class);
                 }
                 else{
-                   // intent = new Intent(FinsallActivity.this, CustomerDetailActivity.class);
-                    intent = new Intent(FinsallActivity.this, LoginActivity.class);
+                    intent = new Intent(FinsallActivity.this, ChoosePaymentMethodActivity.class);
+                   // intent = new Intent(FinsallActivity.this, LoginActivity.class);
                 }
                 startActivity(intent);
                 // close this activity

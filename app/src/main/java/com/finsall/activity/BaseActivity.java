@@ -79,7 +79,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     protected boolean isNotValidDOB(EditText et) {
-        boolean isValid = (!TextUtils.isEmpty(et.getText().toString()) && Pattern.compile("(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\\\d\\\\d)").matcher(et.getText().toString()).matches());
+        boolean isValid = (!TextUtils.isEmpty(et.getText().toString()) && Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$").matcher(et.getText().toString()).matches());
         if (!isValid) {
             et.setError(getString(R.string.error_invalid_date));
             et.requestFocus();
@@ -102,8 +102,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         if(isCachable) {
             JSONObject cachedResponse=  getDataFromCache(jsonObject);
             try {
-                handleSuccessResult(cachedResponse,requestType);
-                return;
+                if(cachedResponse!=null) {
+                    handleSuccessResult(cachedResponse, requestType);
+                    return;
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -119,7 +121,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         hide();
                         try {
+                            if(response!=null)
                             handleSuccessResult(response, requestType);
+                            else
+                                showAlert("Server not reachable.",false,null);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -162,6 +167,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         try {
             jsonObject.put("serviceName", serviceName);
             jsonObject.put("serviceMethod", serviceMethod);
+            jsonObject.put("app", true);
             jsonObject.put("clientId", "2017");
             jsonObject.put("version", "1.0.0");
             if (getData("userId") != null)
@@ -279,6 +285,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 if(nextActivityIntent!=null){
+                    nextActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    nextActivityIntent.putExtra("EXIT", true);
                     startActivity(nextActivityIntent);
                 }
                 if(isFinishRequest){

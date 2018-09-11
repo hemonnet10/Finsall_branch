@@ -61,10 +61,12 @@ public class LoginActivity extends BaseActivity  {
             e.printStackTrace();
         }
         if(etPassword.isEnabled()) {
-           intent = new Intent(this, HomeActivity.class);
+            saveData("isVerified","true");
+            intent = new Intent(this, HomeActivity.class);
         }
         else{
             intent = new Intent(this, OTPActivity.class);
+            intent.putExtra("ROLE",getJsonTagString(success,"roles"));
 
         }
         startActivity(intent);

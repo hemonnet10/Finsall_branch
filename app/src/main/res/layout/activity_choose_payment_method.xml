@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ChoosePaymentMethodActivity">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_centerInParent="true"
+       >
+       <TextView
+           android:id="@+id/tvPaymentAmount"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+
+           android:layout_margin="@dimen/form_margin"
+           android:text="UP=IC1+ EMI 1"
+           />
+       <RadioGroup
+           android:id="@+id/radioGroupPayment"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="20dp"
+           android:layout_below="@+id/tvPaymentAmount">
+
+           <RadioButton
+               android:id="@+id/radioCreditCard"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:text="CREDIT CARD"/>
+
+           <RadioButton
+               android:id="@+id/radioCheque"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:text="CHEQUE"
+               android:layout_below="@+id/radioCreditCard"
+               />
+
+           <RadioButton
+               android:id="@+id/radioRtgsNeft"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:text="RTGS/NEFT"
+               android:layout_below="@+id/radioCheque"
+               />
+
+           <RadioButton
+               android:id="@+id/radioImps"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_below="@+id/radioRtgsNeft"
+               android:text="IMPS"
+               />
+       </RadioGroup>
+       <Button
+           android:id="@+id/buttonSubmit"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/radioGroupPayment"
+           android:onClick="processPayment"
+           android:background="@android:color/holo_blue_bright"
+           android:text="SUBMIT"
+           />
+
+   </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

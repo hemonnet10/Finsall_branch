@@ -84,7 +84,11 @@
         <activity
             android:name=".activity.NotificationActivity"
             android:label="Notification BA" />
-        <activity android:name=".activity.CaptureALADocumentsActivity"></activity>
+        <activity android:name=".activity.CaptureALADocumentsActivity" />
+        <activity android:name=".activity.ChoosePaymentMethodActivity" />
+        <activity android:name=".activity.CreditCardActivity" />
+        <activity android:name=".activity.ChequeActivity" />
+        <activity android:name=".activity.RTGSActivity"></activity>
     </application>
 
 </manifest>

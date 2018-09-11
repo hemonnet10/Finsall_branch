@@ -46,7 +46,7 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textViewTPPremium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rlType"
@@ -57,7 +57,7 @@
                 android:id="@+id/editTextTPPremium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView3"
+                android:layout_below="@+id/textViewTPPremium"
                 android:layout_margin="@dimen/form_margin"
                 android:ems="10"
                 android:hint="\u20B9 TP(Act) Premium"

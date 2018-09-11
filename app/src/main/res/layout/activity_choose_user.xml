@@ -14,33 +14,33 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RadioGroup
-            android:id="@+id/radioUser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <!--<RadioGroup-->
+            <!--android:id="@+id/radioUser"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
 
-            >
-            <RadioButton
-                android:id="@+id/radioNewUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/form_margin"
-                android:text="New Customer"/>
-            <RadioButton
-                android:id="@+id/radioOldUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/form_margin"
-                android:text="Old Customer"/>
-        </RadioGroup>
+            <!--&gt;-->
+            <!--<RadioButton-->
+                <!--android:id="@+id/radioNewUser"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/form_margin"-->
+                <!--android:text="New Customer"/>-->
+            <!--<RadioButton-->
+                <!--android:id="@+id/radioOldUser"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/form_margin"-->
+                <!--android:text="Old Customer"/>-->
+        <!--</RadioGroup>-->
 
         <EditText
             android:id="@+id/etMobileNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/radioUser"
+            android:maxLength="10"
             android:layout_margin="@dimen/form_margin"
-            android:enabled="false"
+            android:enabled="true"
             android:hint="Enter Mobile No" />
         <Button
 

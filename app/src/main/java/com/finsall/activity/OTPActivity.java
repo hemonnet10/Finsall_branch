@@ -2,6 +2,7 @@ package com.finsall.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +14,12 @@ import org.json.JSONObject;
 
 public class OTPActivity extends BaseActivity {
 
+    String role;
     String requestFrom;
     EditText editTextOTP;
+    Parcelable userDetail;
+    private String mobileNo;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +32,16 @@ public class OTPActivity extends BaseActivity {
         }
         Intent intent = getIntent();
         requestFrom = intent.getStringExtra("REQUEST_TYPE");
-        if ("CUSTOMER_DETAIL".equals(requestFrom)) {
+
+        role = intent.getStringExtra("ROLE");
+
+        userDetail=intent.getParcelableExtra("USER_DETAIL");
+        if ("NEW_CUSTOMER".equals(requestFrom) || "OLD_CUSTOMER".equals(requestFrom)) {
             setTitle("Proceed To Loan");
+            mobileNo = intent.getStringExtra("mobileNo");
             ((Button) findViewById(R.id.buttonValidateOTP)).setText("SUBMIT");
+            userId = intent.getStringExtra("userId");
+
         }
 
         editTextOTP = (EditText) findViewById(R.id.editTextOTP);
@@ -40,13 +52,17 @@ public class OTPActivity extends BaseActivity {
 
         String errorMsg = (String) getJsonTag(success, "errorMessage");
         if (errorMsg != null && !errorMsg.isEmpty()) {
+            if(getJsonTagString(success,"statusCode").equals("FUK Indi")){
+                showAlert(errorMsg,  true,new Intent(this,HomeActivity.class));
+            }
+            else
             showAlert(errorMsg, false, null);
             return;
         }
-        if ("CUSTOMER_DETAIL".equals(requestFrom)) {
-
-            if (!editTextOTP.getText().equals("1234")) {// to be replaced by server resp
-                Intent intent = new Intent(this, KYCCustomerDetailActivity.class);
+        if ("OLD_CUSTOMER".equals(requestFrom)) {
+            if (true) {// to be replaced by server resp
+                Intent intent = new Intent(this, CustomerDetailActivity.class);
+                intent.putExtra("REQUEST_TYPE","OLD_CUSTOMER");
                 startActivity(intent);
             } else {
                 Intent intent = new Intent(this, CustomerRejectionActivity.class);
@@ -54,16 +70,43 @@ public class OTPActivity extends BaseActivity {
 
             }
 
-        } else if (requestFrom == null) {
+        }
+        else if ("checkCbill".equals(requestType)) {
+
+
+            Intent intent = new Intent(this, KYCCustomerDetailActivity.class);
+            intent.putExtra("ROLE",role);
+            intent.putExtra("mobileNo",mobileNo);
+            startActivity(intent);
+
+
+        }
+        else if ("NEW_CUSTOMER".equals(requestFrom)) {
+
+            checkCBillScore();
+
+        }
+        else if (requestFrom == null) {
 
             Intent intent = new Intent(this, HomeActivity.class);
+            saveData("isVerified","true");
             startActivity(intent);
         }
     }
 
+    private void checkCBillScore() {
+
+        JSONObject jsonObject = getBaseJSONRequestObj("UserService", "checkCibilOrKyc");
+        addJsonTag(jsonObject, "loggedInUserId", getData("userId"));
+        addJsonTag(jsonObject, "userId", userId);
+        addJsonTag(jsonObject, "roles", "customer");
+        sendRequestToServer(jsonObject, "checkCbill", false);
+
+    }
+
     @Override
     protected void handleErrorResult(String error, String requestType) {
-        showAlert(error,false,null);
+        showAlert(error, false, null);
     }
 
 
@@ -73,7 +116,10 @@ public class OTPActivity extends BaseActivity {
             return;
 
         JSONObject jsonObject = getBaseJSONRequestObj("UserService", "validateOTP");
-        addJsonTag(jsonObject, "otp", editTextOTP.getText().toString());
+        addJsonTag(jsonObject, "loggedInUserId", getData("userId"));
+        addJsonTag(jsonObject, "userId", getData("userId"));
+        addJsonTag(jsonObject, "genericParam", editTextOTP.getText().toString());
+        addJsonTag(jsonObject, "roles", role);
         sendRequestToServer(jsonObject, "validateOTP", false);
 
     }

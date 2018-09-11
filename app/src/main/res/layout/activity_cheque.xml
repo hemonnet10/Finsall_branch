@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ChequeActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tvPaymentAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/form_margin"
+        android:text="Enter Cheque Number"
+        />
+    <EditText
+        android:id="@+id/etChequeNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/form_margin"
+        android:layout_below="@+id/tvPaymentAmount"
+        android:maxLength="15"
+        />
+    <Button
+        android:id="@+id/buttonScanCheque"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/form_margin"
+        android:layout_below="@+id/etChequeNumber"
+        android:text="Scan Cheque"
+        android:background="@android:color/holo_blue_bright"
+        android:onClick="scanCheque"
+        />
+
+
+    <ImageView
+        android:id="@+id/imageViewCheque"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/form_margin"
+        android:layout_below="@+id/buttonScanCheque"
+
+        />
+
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/form_margin"
+        android:layout_alignParentBottom="true"
+        android:text="Submit"
+        android:background="@android:color/holo_blue_bright"
+        android:onClick="submitRequest"
+        />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

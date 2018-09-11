@@ -91,6 +91,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         }
         else if( item.getItemId()== R.id.action_settings) {
             removeData("user");
+            removeData("isVerified");
             Intent  intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
@@ -144,4 +145,8 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         return false;
     }
 
+    @Override
+    public void onBackPressed(){
+        finish();
+    }
 }

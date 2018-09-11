@@ -20,14 +20,33 @@
 
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/textView001"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/form_margin"
-                android:text="Name*" />
+                android:text="First Name*" />
 
             <EditText
-                android:id="@+id/etName"
+                android:id="@+id/etFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView001"
+                android:layout_margin="@dimen/form_margin"
+                android:ems="10"
+                android:maxLength="20"
+                android:hint=""
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etFirstName"
+                android:layout_margin="@dimen/form_margin"
+                android:text="Lat Name*" />
+
+            <EditText
+                android:id="@+id/etLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView1"
@@ -37,11 +56,12 @@
                 android:hint=""
                 android:inputType="text" />
 
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/etName"
+                android:layout_below="@+id/etLastName"
                 android:layout_margin="@dimen/form_margin"
                 android:text="Mobile Number*" />
 
@@ -151,7 +171,7 @@
                 android:layout_below="@+id/textView7"
                 android:layout_margin="@dimen/form_margin"
                 android:maxLength="10"
-                android:hint="Enter Date of Birth (DD/MM/YYYY)"
+                android:hint="Enter Date of Birth (YYYY-MM-DD)"
                 />
 
 

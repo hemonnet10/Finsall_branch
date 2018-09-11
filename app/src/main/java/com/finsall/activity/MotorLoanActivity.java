@@ -14,6 +14,7 @@ import com.finsall.dto.InsuranceCompany;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -81,15 +82,17 @@ public class MotorLoanActivity extends BaseActivity {
         }
         if(pageName.equals(MOTOR_LOAN_CALCULATION)) {
             JSONObject jsonObject = getBaseJSONRequestObj("FinsAllService", "getInsuranceCompany");
-            sendRequestToServer(jsonObject, "GET_INSURANCE_COMPANY", false);
+            sendRequestToServer(jsonObject, "GET_INSURANCE_COMPANY", true);
         }
         else{
             setTitle(pageName);
             textViewType.setText("Policy Type");
+            ((TextView)findViewById(R.id.textViewTPPremium)).setText("Insurance Premium");
+            editTextTPPremium.setHint("Insurance Premium");
             insuranceCompanySpinner.setVisibility(View.GONE);
             JSONObject jsonObject = getBaseJSONRequestObj("FinsAllService", "getInsuranceTypeById");
             addJsonTag(jsonObject, "insuranceTypeId", "2");
-            sendRequestToServer(jsonObject, "GET_INSURANCE_TYPE", false);
+            sendRequestToServer(jsonObject, "GET_INSURANCE_TYPE", true);
             editTextOtherPremium.setVisibility(View.GONE);
             ((TextView)findViewById(R.id.textViewOtherText)).setVisibility(View.GONE);
         }
@@ -141,6 +144,15 @@ public class MotorLoanActivity extends BaseActivity {
     }
 
     public void processLoan(View view) {
+
+/*
+        JSONObject jsonObject = getBaseJSONRequestObj("UserService", "proceedToLoan");
+        addJsonTag(jsonObject, "roles", "customer");
+        addJsonTag(jsonObject, "mobileNo", "customer");
+        //addJsonTag(jsonObject, "status", "customer");
+*/
+
+
         startActivity(new Intent(this, ChooseUserActivity.class));
     }
 
